@@ -51,8 +51,8 @@ test('expect playerName is Anonymous at the beggining of the game', () => {
 
 test('expect playerName can be updated', () => {
   const myModel = new Model();
-  myModel.playerName = 'Selene';
-  expect(myModel.playerName).toEqual('Selene');
+  myModel.playerName = 'Oscar';
+  expect(myModel.playerName).toEqual('Oscar');
 });
 
 test('expect fontStyleTitle is an object', () => {

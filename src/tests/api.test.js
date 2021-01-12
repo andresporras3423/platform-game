@@ -39,7 +39,7 @@ test('expect getScore service returns sorted objects by score', () => {
 });
 
 test('expect saveScore returns a successfull message', () => {
-  api.saveScore('Selene', 10)
+  api.saveScore('Oscar', 10)
     .then((response) => {
       expect(response).resolves.toBe('Leaderboard score created correctly.');
     });
