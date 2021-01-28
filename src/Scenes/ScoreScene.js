@@ -8,7 +8,7 @@ export default class ScoreScene extends Phaser.Scene {
   }
 
   create() {
-    this.menuButton = new Button(this, 400, 550, 'blueButton1', 'blueButton2', 'Menu', 'Title');
+    this.menuButton = new Button(this, 400, 550, 'greyButton1', 'greyButton2', 'Menu', 'Title');
     this.text = this.add.text(290, 20, 'Top Scorers', { fontSize: 40, fill: '#000' });
     let position = 100;
     api.getScore().then((scores) => {

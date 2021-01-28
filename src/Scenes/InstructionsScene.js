@@ -71,7 +71,7 @@ export default class InstructionsScene extends Phaser.Scene {
       }
     });
 
-    this.menuButton = new ButtonWithCallback(this, 400, 500, 'blueButton1', 'blueButton2', 'Start!', 'Game', this.invokeSaving);
+    this.menuButton = new ButtonWithCallback(this, 400, 500, 'greyButton1', 'greyButton2', 'Start!', 'Game', this.invokeSaving);
   }
 
   saveName(name) {
