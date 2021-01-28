@@ -1,8 +1,6 @@
 import Phaser from 'phaser';
 import greyButton1 from '../assets/ui/grey_button1.jpg';
 import greyButton2 from '../assets/ui/grey_button2.png';
-import box from '../assets/ui/grey_box.png';
-import checkedBox from '../assets/ui/blue_boxCheckmark.png';
 import bgMusicGame from '../assets/Steve_Combs.mp3';
 import bgMusic from '../assets/Loyalty_Freak_Music.mp3';
 import bgGameOverMusic from '../assets/shindeiru.ogg';
@@ -94,8 +92,6 @@ export default class PreloaderScene extends Phaser.Scene {
     // load assets needed in our game
     this.load.image('greyButton1', greyButton1);
     this.load.image('greyButton2', greyButton2);
-    this.load.image('box', box);
-    this.load.image('checkedBox', checkedBox);
     this.load.audio('bgMusic', [bgMusic]);
     this.load.audio('bgMusicGame', [bgMusicGame]);
     this.load.audio('bgGameOverMusic', [bgGameOverMusic]);
