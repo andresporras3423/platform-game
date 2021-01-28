@@ -10,15 +10,15 @@
     },
     "repository": {
         "type": "git",
-        "url": "https://github.com/enelesmai/phaser3-template.git"
+        "url": "https://github.com/andresporras3423/platform-game.git"
     },
     "keywords": [],
     "author": "",
     "license": "ISC",
     "bugs": {
-        "url": "https://github.com/enelesmai/phaser3-template/issues"
+        "url": "https://github.com/andresporras3423/platform-game/issues"
     },
-    "homepage": "https://github.com/enelesmai/phaser3-template#readme",
+    "homepage": "https://github.com/andresporras3423/platform-game#readme",
     "devDependencies": {
         "@babel/core": "^7.9.6",
         "@babel/preset-env": "^7.9.6",

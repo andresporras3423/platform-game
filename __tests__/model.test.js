@@ -1,4 +1,4 @@
-import Model from '../Services/model';
+import Model from '../src/Services/model';
 
 test('expect music is on at the beggining of the game', () => {
   const myModel = new Model();

@@ -1,4 +1,4 @@
-import api from '../Services/api';
+import api from '../src/Services/api';
 
 test('expect get a promise from getScore service', () => {
   api.getScore()

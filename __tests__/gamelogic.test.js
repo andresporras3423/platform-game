@@ -1,4 +1,4 @@
-import { GameLogic } from '../Services/gamelogic';
+import { GameLogic } from '../src/Services/gamelogic';
 
 describe('Game initial values', () => {
   it('Score is zero', () => {
