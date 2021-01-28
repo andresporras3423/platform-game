@@ -49,49 +49,49 @@ export default class GameScene extends Phaser.Scene {
       gameOptions.spawnRange[1],
     );
 
-    // is there a bubble over the platform?
+    // is there a meat over the platform?
     if (this.addedPlatforms > 1) {
-      if (Phaser.Math.Between(1, 100) <= gameOptions.bubblePercent) {
-        if (this.bubblePool.getLength()) {
-          const bubble = this.bubblePool.getFirst();
-          bubble.x = posX;
-          bubble.y = posY - 96;
-          bubble.alpha = 1;
-          bubble.active = true;
-          bubble.visible = true;
-          this.bubblePool.remove(bubble);
+      if (Phaser.Math.Between(1, 100) <= gameOptions.meatPercent) {
+        if (this.meatPool.getLength()) {
+          const meat = this.meatPool.getFirst();
+          meat.x = posX;
+          meat.y = posY - 96;
+          meat.alpha = 1;
+          meat.active = true;
+          meat.visible = true;
+          this.meatPool.remove(meat);
         } else {
-          const bubble = this.physics.add.sprite(posX, posY - 96, 'bubble');
-          bubble.setImmovable(true);
-          bubble.setVelocityX(platform.body.velocity.x);
-          bubble.anims.play('rotate');
-          bubble.setDepth(2);
-          this.bubbleGroup.add(bubble);
+          const meat = this.physics.add.sprite(posX, posY - 96, 'meat');
+          meat.setImmovable(true);
+          meat.setVelocityX(platform.body.velocity.x);
+          meat.anims.play('rotate');
+          meat.setDepth(2);
+          this.meatGroup.add(meat);
         }
       }
     }
 
-    // is there a virus over the platform?
-    if (Phaser.Math.Between(1, 100) <= gameOptions.virusPercent) {
-      if (this.virusPool.getLength()) {
-        const virus = this.virusPool.getFirst();
-        virus.x = posX - platformWidth / 2 + Phaser.Math.Between(1, platformWidth);
-        virus.y = posY - 46;
-        virus.alpha = 1;
-        virus.active = true;
-        virus.visible = true;
-        this.virusPool.remove(virus);
+    // is there a cactus over the platform?
+    if (Phaser.Math.Between(1, 100) <= gameOptions.cactusPercent) {
+      if (this.cactusPool.getLength()) {
+        const cactus = this.cactusPool.getFirst();
+        cactus.x = posX - platformWidth / 2 + Phaser.Math.Between(1, platformWidth);
+        cactus.y = posY - 46;
+        cactus.alpha = 1;
+        cactus.active = true;
+        cactus.visible = true;
+        this.cactusPool.remove(cactus);
       } else {
-        const virus = this.physics.add.sprite(
+        const cactus = this.physics.add.sprite(
           posX - platformWidth / 2
-                    + Phaser.Math.Between(1, platformWidth), posY - 46, 'virus',
+                    + Phaser.Math.Between(1, platformWidth), posY - 46, 'cactus',
         );
-        virus.setImmovable(true);
-        virus.setVelocityX(platform.body.velocity.x);
-        virus.setSize(8, 2, true);
-        virus.anims.play('burn');
-        virus.setDepth(2);
-        this.virusGroup.add(virus);
+        cactus.setImmovable(true);
+        cactus.setVelocityX(platform.body.velocity.x);
+        cactus.setSize(8, 2, true);
+        cactus.anims.play('burn');
+        cactus.setDepth(2);
+        this.cactusGroup.add(cactus);
       }
     }
   }
@@ -227,37 +227,37 @@ export default class GameScene extends Phaser.Scene {
       },
     });
 
-    // group with all active bubbles.
-    this.bubbleGroup = this.add.group({
-      // once a bubble is removed, it's added to the pool
-      removeCallback(bubble) {
-        bubble.scene.bubblePool.add(bubble);
+    // group with all active meats.
+    this.meatGroup = this.add.group({
+      // once a meat is removed, it's added to the pool
+      removeCallback(meat) {
+        meat.scene.meatPool.add(meat);
       },
     });
 
-    // bubble pool
-    this.bubblePool = this.add.group({
-      // once a bubble is removed from the pool, it's added to the active bubbles group
-      removeCallback(bubble) {
-        bubble.scene.bubbleGroup.add(bubble);
+    // meat pool
+    this.meatPool = this.add.group({
+      // once a meat is removed from the pool, it's added to the active meats group
+      removeCallback(meat) {
+        meat.scene.meatGroup.add(meat);
       },
     });
 
-    // group with all active viruscamps.
-    this.virusGroup = this.add.group({
+    // group with all active cactuscamps.
+    this.cactusGroup = this.add.group({
 
-      // once a viruscamp is removed, it's added to the pool
-      removeCallback(virus) {
-        virus.scene.virusPool.add(virus);
+      // once a cactuscamp is removed, it's added to the pool
+      removeCallback(cactus) {
+        cactus.scene.cactusPool.add(cactus);
       },
     });
 
-    // virus pool
-    this.virusPool = this.add.group({
+    // cactus pool
+    this.cactusPool = this.add.group({
 
-      // once a virus is removed from the pool, it's added to the active virus group
-      removeCallback(virus) {
-        virus.scene.virusGroup.add(virus);
+      // once a cactus is removed from the pool, it's added to the active cactus group
+      removeCallback(cactus) {
+        cactus.scene.cactusGroup.add(cactus);
       },
     });
 
@@ -292,27 +292,27 @@ export default class GameScene extends Phaser.Scene {
       }
     }, null, this);
 
-    // setting collisions between the player and the bubble group
-    this.physics.add.overlap(this.player, this.bubbleGroup, function (player, bubble) {
+    // setting collisions between the player and the meat group
+    this.physics.add.overlap(this.player, this.meatGroup, function (player, meat) {
       this.riserSound = this.sound.add('riserSound', { volume: 0.5, loop: false });
       this.riserSound.play();
       this.scoreUp(50);
       this.tweens.add({
-        targets: bubble,
-        y: bubble.y - 100,
+        targets: meat,
+        y: meat.y - 100,
         alpha: 0,
         duration: 800,
         ease: 'Cubic.easeOut',
         callbackScope: this,
         onComplete() {
-          this.bubbleGroup.killAndHide(bubble);
-          this.bubbleGroup.remove(bubble);
+          this.meatGroup.killAndHide(meat);
+          this.meatGroup.remove(meat);
         },
       });
     }, null, this);
 
-    // setting collisions between the player and the virus group
-    this.physics.add.overlap(this.player, this.virusGroup, function () {
+    // setting collisions between the player and the cactus group
+    this.physics.add.overlap(this.player, this.cactusGroup, function () {
       this.player.y = 10000;
       this.dying = true;
       this.player.anims.stop();
@@ -397,19 +397,19 @@ export default class GameScene extends Phaser.Scene {
       }
     }, this);
 
-    // recycling bubbles
-    this.bubbleGroup.getChildren().forEach(function (bubble) {
-      if (bubble.x < -bubble.displayWidth / 2) {
-        this.bubbleGroup.killAndHide(bubble);
-        this.bubbleGroup.remove(bubble);
+    // recycling meats
+    this.meatGroup.getChildren().forEach(function (meat) {
+      if (meat.x < - meat.displayWidth / 2) {
+        this.meatGroup.killAndHide(meat);
+        this.meatGroup.remove(meat);
       }
     }, this);
 
-    // recycling virus
-    this.virusGroup.getChildren().forEach(function (virus) {
-      if (virus.x < -virus.displayWidth / 2) {
-        this.virusGroup.killAndHide(virus);
-        this.virusGroup.remove(virus);
+    // recycling cactus
+    this.cactusGroup.getChildren().forEach(function (cactus) {
+      if (cactus.x < -cactus.displayWidth / 2) {
+        this.cactusGroup.killAndHide(cactus);
+        this.cactusGroup.remove(cactus);
       }
     }, this);
 

@@ -23,9 +23,9 @@ const gameOptions = {
   // consecutive jumps allowed
   jumps: 2,
   // % of probability a coin appears on the platform
-  bubblePercent: 25,
+  meatPercent: 25,
   // % of probability a fire appears on the platform
-  virusPercent: 25,
+  cactusPercent: 25,
 };
 
 export default gameOptions;

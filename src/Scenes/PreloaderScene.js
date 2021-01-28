@@ -11,9 +11,9 @@ import downerSound from '../assets/fall-down.mp3';
 import riserSound from '../assets/raiser.wav';
 import platform from '../assets/ui/square.jpg';
 import player from '../assets/ui/google_dino.png';
-import bubble from '../assets/ui/meat.png';
-import cloud from '../assets/ui/cloud2.png';
-import virus from '../assets/ui/tree.png';
+import meat from '../assets/ui/meat.png';
+import cloud from '../assets/ui/cloud.png';
+import cactus from '../assets/ui/cactus.png';
 import heart from '../assets/ui/grey_heart.png';
 
 export default class PreloaderScene extends Phaser.Scene {
@@ -114,8 +114,8 @@ export default class PreloaderScene extends Phaser.Scene {
       frameWidth: 24,
       frameHeight: 48,
     });
-    // the bubble is a sprite sheet made by 20x20 pixels
-    this.load.spritesheet('bubble', bubble, {
+    // the meat is a sprite sheet made by 20x20 pixels
+    this.load.spritesheet('meat', meat, {
       frameWidth: 40,
       frameHeight: 40,
     });
@@ -124,8 +124,8 @@ export default class PreloaderScene extends Phaser.Scene {
       frameWidth: 1024,
       frameHeight: 1024,
     });
-    // the viruscamp is a sprite sheet made by 32x58 pixels
-    this.load.spritesheet('virus', virus, {
+    // the cactuscamp is a sprite sheet made by 32x58 pixels
+    this.load.spritesheet('cactus', cactus, {
       frameWidth: 55,
       frameHeight: 55,
     });
