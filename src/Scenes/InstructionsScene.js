@@ -1,5 +1,5 @@
 import Phaser from 'phaser';
-import ButtonWithCallback from '../Objects/Button';
+import ButtonWithCallback from '../Elements/Button';
 
 const validateKeys = (e) => {
   if (

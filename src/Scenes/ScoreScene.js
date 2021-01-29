@@ -1,5 +1,5 @@
 import Phaser from 'phaser';
-import Button from '../Objects/Button';
+import Button from '../Elements/Button';
 import api from '../Services/api';
 
 export default class ScoreScene extends Phaser.Scene {

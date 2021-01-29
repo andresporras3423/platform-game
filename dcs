@@ -1,0 +1,71 @@
+[33mcommit 676d144930e38ce3d0d2fbad3552ab88fd474900[m[33m ([m[1;36mHEAD -> [m[1;32mfeature-platform[m[33m, [m[1;31morigin/feature-platform[m[33m)[m
+Author: oscarporras02 <oscarrussi@outlook.com>
+Date:   Thu Jan 28 16:52:22 2021 -0500
+
+    remove unnecessary files and images
+
+[33mcommit 1da2af42589fdc1f50ad535bfd6c49c94e8b4d5c[m
+Author: oscarporras02 <oscarrussi@outlook.com>
+Date:   Thu Jan 28 15:49:46 2021 -0500
+
+    delete options scene
+
+[33mcommit 978ee9b31a3ae033a2e8a91c3602ec995cc46d2a[m
+Author: oscarporras02 <oscarrussi@outlook.com>
+Date:   Thu Jan 28 15:03:40 2021 -0500
+
+    update logo and splash image
+
+[33mcommit 012aca3c1a60cf68fc0c357e7d44514a5a695da8[m
+Author: oscarporras02 <oscarrussi@outlook.com>
+Date:   Thu Jan 28 14:14:12 2021 -0500
+
+    update name of buttons
+
+[33mcommit 113deb98a1087ded16cfd45f9d669eb1965b2c53[m
+Author: oscarporras02 <oscarrussi@outlook.com>
+Date:   Thu Jan 28 13:12:02 2021 -0500
+
+    update name of elements in the platforms
+
+[33mcommit ff91c98ec9f50a676f39afb814c9518ad7b3b65a[m
+Author: oscarporras02 <oscarrussi@outlook.com>
+Date:   Thu Jan 28 12:23:40 2021 -0500
+
+    add tests to the project
+
+[33mcommit 4ad19bec1e9305a9dc560ad98335b82a52633b0b[m
+Author: oscarporras02 <oscarrussi@outlook.com>
+Date:   Mon Jan 11 21:49:34 2021 -0500
+
+    change audios
+
+[33mcommit 327d608905f084b57b074a560e57aa5e58aa87d0[m
+Author: oscarporras02 <oscarrussi@outlook.com>
+Date:   Mon Jan 11 18:22:05 2021 -0500
+
+    modify images
+
+[33mcommit 9497a8ed8a1fc627bd2a350d09bfe332a4e60654[m
+Author: oscarporras02 <oscarrussi@outlook.com>
+Date:   Fri Jan 8 18:33:06 2021 -0500
+
+    add config to run webpack with phaser3
+
+[33mcommit 4a1ce955eeed136463c1a58e570e4efbd7f83daa[m
+Author: oscarporras02 <oscarrussi@outlook.com>
+Date:   Thu Jan 7 17:01:44 2021 -0500
+
+    add config for webpack
+
+[33mcommit 820eb761eca2ff6d36ff926f1b57109fce63e946[m
+Author: oscarporras02 <oscarrussi@outlook.com>
+Date:   Wed Jan 6 17:43:14 2021 -0500
+
+    first commit with linter config
+
+[33mcommit e95205c5b862e8601364d052da30107a074d8671[m[33m ([m[1;31morigin/main[m[33m, [m[1;31morigin/develop[m[33m, [m[1;31morigin/HEAD[m[33m, [m[1;32mdevelop[m[33m)[m
+Author: Oscar Andrés Russi Porras <oscarrussi@outlook.com>
+Date:   Wed Jan 6 17:27:24 2021 -0500
+
+    Initial commit
