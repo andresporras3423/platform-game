@@ -15,7 +15,7 @@ export default class BootScene extends Phaser.Scene {
 
   create() {
     this.add.image(400, 300, 'phaserLogo');
-    this.timedEvent = this.time.delayedCall(1500, this.ready, [], this);
+    this.timedEvent = this.time.delayedCall(1800, this.ready, [], this);
   }
 
   ready() {
@@ -23,6 +23,6 @@ export default class BootScene extends Phaser.Scene {
   }
 
   fadePicture() {
-    this.add.tween(this.picture).to({ alpha: 0 }, 1500, Phaser.Easing.Linear.None, true);
+    this.add.tween(this.picture).to({ alpha: 0 }, 1800, Phaser.Easing.Linear.None, true);
   }
 }
