@@ -3,8 +3,8 @@
 /* eslint-disable no-undef */
 /* eslint-disable import/no-named-as-default */
 import Phaser from 'phaser';
-import gameOptions from '../Config/gameOptions';
-import config from '../Config/config';
+import gameOptions from '../Options/gameOptions';
+import config from '../Options/config';
 import api from '../Services/api';
 import GameLogic from '../Services/gamelogic';
 

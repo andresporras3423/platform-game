@@ -1,5 +1,5 @@
 import Phaser from 'phaser';
-import config from '../Config/config';
+import config from '../Options/config';
 import Button from '../Elements/Button';
 
 export default class HelpScene extends Phaser.Scene {
