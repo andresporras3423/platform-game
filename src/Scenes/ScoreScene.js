@@ -16,7 +16,7 @@ export default class ScoreScene extends Phaser.Scene {
       scores.forEach((element) => {
         this.text = this.add.text(260, position, `${i}. ${element.user}`, { fontSize: 25, fill: '#000' });
         this.text = this.add.text(480, position, `${element.score} pts`, { fontSize: 25, fill: '#000' });
-        position += 40;
+        position += 30;
         i += 1;
       });
     });

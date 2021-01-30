@@ -5,7 +5,7 @@ import splashScreen from '../assets/kitkit-logo.png';
 export default class BootScene extends Phaser.Scene {
   constructor() {
     super('Boot');
-    this.picture = {};
+    this.image = {};
   }
 
   preload() {
@@ -22,7 +22,7 @@ export default class BootScene extends Phaser.Scene {
     this.scene.start('Preloader');
   }
 
-  fadePicture() {
-    this.add.tween(this.picture).to({ alpha: 0 }, 1800, Phaser.Easing.Linear.None, true);
+  fadeImage() {
+    this.add.tween(this.image).to({ alpha: 0 }, 1800, Phaser.Easing.Linear.None, true);
   }
 }

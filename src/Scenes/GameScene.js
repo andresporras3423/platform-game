@@ -19,7 +19,7 @@ export default class GameScene extends Phaser.Scene {
   }
 
   // the core of the script: platform are added from the pool or created on the fly
-  addPlatform(platformWidth, posX, posY) {
+  newPlatform(platformWidth, posX, posY) {
     this.addedPlatforms += 1;
     let platform;
     if (this.platformPool.getLength()) {
@@ -107,7 +107,7 @@ export default class GameScene extends Phaser.Scene {
                     && this.playerJumps < gameOptions.jumps))) {
       if (this.player.body.touching.down) {
         if (GameLogic.currentLives() !== 0) {
-          this.jumpSound = this.sound.add('jumpSound', { volume: 0.8, loop: false });
+          this.jumpSound = this.sound.add('jumpSound', { volume: 0.4, loop: false });
           this.jumpSound.play();
         }
         this.playerJumps = 0;
@@ -180,8 +180,8 @@ export default class GameScene extends Phaser.Scene {
 
   lifeOver() {
     GameLogic.liveDown();
-    this.downerSound = this.sound.add('downerSound', { volume: 0.5, loop: false });
-    this.downerSound.play();
+    this.fallSound = this.sound.add('fallSound', { volume: 0.9, loop: false });
+    this.fallSound.play();
     switch (GameLogic.currentLives()) {
       case (2):
         this.heart3.visible = false;
@@ -271,7 +271,7 @@ export default class GameScene extends Phaser.Scene {
     this.playerJumps = 0;
 
     // adding a platform to the game, the arguments are platform width, x position and y position
-    this.addPlatform(
+    this.newPlatform(
       config.width, config.width / 1.5,
       config.height * gameOptions.platformVerticalLimit[1],
     );
@@ -441,7 +441,7 @@ export default class GameScene extends Phaser.Scene {
       const nextPlatformHeight = Phaser.Math.Clamp(
         nextPlatformGap, minPlatformHeight, maxPlatformHeight,
       );
-      this.addPlatform(nextPlatformWidth, config.width + nextPlatformWidth / 2, nextPlatformHeight);
+      this.newPlatform(nextPlatformWidth, config.width + nextPlatformWidth / 2, nextPlatformHeight);
     }
   }
 }

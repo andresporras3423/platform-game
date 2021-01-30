@@ -5,7 +5,7 @@ import bgMusicGame from '../assets/Steve_Combs.mp3';
 import bgMusic from '../assets/Loyalty_Freak_Music.mp3';
 import bgGameOverMusic from '../assets/shindeiru.ogg';
 import jumpSound from '../assets/jumping.mp3';
-import downerSound from '../assets/fall-down.mp3';
+import fallSound from '../assets/fall-down.mp3';
 import riserSound from '../assets/raiser.wav';
 import platform from '../assets/ui/square.jpg';
 import player from '../assets/ui/google_dino.png';
@@ -96,7 +96,7 @@ export default class PreloaderScene extends Phaser.Scene {
     this.load.audio('bgMusicGame', [bgMusicGame]);
     this.load.audio('bgGameOverMusic', [bgGameOverMusic]);
     this.load.audio('jumpSound', [jumpSound]);
-    this.load.audio('downerSound', [downerSound]);
+    this.load.audio('fallSound', [fallSound]);
     this.load.audio('riserSound', [riserSound]);
     this.load.image('heart1', heart);
     this.load.image('heart2', heart);
