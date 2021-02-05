@@ -1,4 +1,4 @@
-import { GameLogic } from '../src/Services/gamelogic';
+import { GameLogic } from '../src/Services/gamesetup';
 
 describe('Game initial setup', () => {
   it('The player has 3 lives', () => {

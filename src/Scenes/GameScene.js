@@ -4,7 +4,7 @@
 /* eslint-disable import/no-named-as-default */
 import Phaser from 'phaser';
 import webapi from '../Services/webapi';
-import GameLogic from '../Services/gamelogic';
+import GameSetup from '../Services/gamesetup';
 import gameOptions from '../Options/gameOptions';
 import config from '../Options/config';
 
@@ -111,7 +111,7 @@ export default class GameScene extends Phaser.Scene {
                 || (this.playerJumps > 0
                     && this.playerJumps < gameOptions.jumps))) {
       if (this.player.body.touching.down) {
-        if (GameLogic.currentLives() !== 0) {
+        if (GameSetup.currentLives() !== 0) {
           this.jumpSound = this.sound.add('jumpSound', { volume: 0.4, loop: false });
           this.jumpSound.play();
         }
@@ -152,7 +152,7 @@ export default class GameScene extends Phaser.Scene {
   }
 
   addScoreDisplay() {
-    switch (GameLogic.currentLives()) {
+    switch (GameSetup.currentLives()) {
       case (1):
         this.heart1 = this.add.image(config.width - 80, 40, 'heart1');
         break;
@@ -168,26 +168,26 @@ export default class GameScene extends Phaser.Scene {
       default:
         break;
     }
-    this.scoreText = this.add.text(40, 40, `Score: ${GameLogic.currentScore()}`, {
+    this.scoreText = this.add.text(40, 40, `Score: ${GameSetup.currentScore()}`, {
       fontSize: 20,
       fill: '#000',
     });
   }
 
   scoreUp(points) {
-    GameLogic.scoreUp(points);
+    GameSetup.scoreUp(points);
     this.updateScore();
   }
 
   updateScore() {
-    this.scoreText.setText(`Score: ${GameLogic.currentScore()}`);
+    this.scoreText.setText(`Score: ${GameSetup.currentScore()}`);
   }
 
   lifeOver() {
-    GameLogic.liveDown();
+    GameSetup.liveDown();
     this.fallSound = this.sound.add('fallSound', { volume: 0.9, loop: false });
     this.fallSound.play();
-    switch (GameLogic.currentLives()) {
+    switch (GameSetup.currentLives()) {
       case (2):
         this.heart3.visible = false;
         break;
@@ -201,7 +201,7 @@ export default class GameScene extends Phaser.Scene {
   }
 
   saveScore(callback) {
-    webapi.saveScore(this.model.playerName === '' ? 'Anon' : this.model.playerName, GameLogic.currentScore()).then(() => {
+    webapi.saveScore(this.model.playerName === '' ? 'Anon' : this.model.playerName, GameSetup.currentScore()).then(() => {
       callback();
     });
   }
@@ -341,18 +341,18 @@ export default class GameScene extends Phaser.Scene {
 
   gameOver(){
     this.lifeOver();
-      if (GameLogic.currentLives() === 0) {
+      if (GameSetup.currentLives() === 0) {
         this.scene.pause();
         game = this;
         game.sys.game.globals.bgMusicGame.stop();
         this.bgGameOverMusic = this.sound.add('bgGameOverMusic', { volume: 0.5, loop: false });
         this.bgGameOverMusic.play();
         this.timedEvent = this.time.delayedCall(2000, this.saveScore(() => {
-          game.model.score = GameLogic.currentScore();
+          game.model.score = GameSetup.currentScore();
           game.scene.start('GameOver');
           game.sys.game.globals.bgMusic.play();
           game.model.bgMusicPlaying = true;
-          GameLogic.newGame();
+          GameSetup.newGame();
         }), [], this);
       } else {
         this.scene.start('Game');
@@ -369,18 +369,18 @@ export default class GameScene extends Phaser.Scene {
     if (this.player.y > config.height) {
       this.firstCactus=true;
       this.lifeOver();
-      if (GameLogic.currentLives() === 0) {
+      if (GameSetup.currentLives() === 0) {
         this.scene.pause();
         game = this;
         game.sys.game.globals.bgMusicGame.stop();
         this.bgGameOverMusic = this.sound.add('bgGameOverMusic', { volume: 0.5, loop: false });
         this.bgGameOverMusic.play();
         this.timedEvent = this.time.delayedCall(2000, this.saveScore(() => {
-          game.model.score = GameLogic.currentScore();
+          game.model.score = GameSetup.currentScore();
           game.scene.start('GameOver');
           game.sys.game.globals.bgMusic.play();
           game.model.bgMusicPlaying = true;
-          GameLogic.newGame();
+          GameSetup.newGame();
         }), [], this);
       } else {
         this.scene.start('Game');
