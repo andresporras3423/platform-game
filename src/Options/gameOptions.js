@@ -25,7 +25,7 @@ const gameOptions = {
   // % of probability a coin appears on the platform
   meatPercent: 25,
   // % of probability a fire appears on the platform
-  cactusPercent: 50,
+  cactusPercent: 100,
 };
 
 export default gameOptions;
