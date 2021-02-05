@@ -65,6 +65,7 @@ export default class InstructionsScene extends Phaser.Scene {
         this.nameText.setText(this.playerName);
       } else if (e.key === 'Backspace' && this.playerName.length > 0) {
         this.playerName = this.playerName.slice(0, -1);
+        this.saveName(this.playerName);
         this.nameText.setText(this.playerName);
       } else if (enterKey(e)) {
         this.saveName(this.playerName);
