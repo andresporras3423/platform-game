@@ -10,7 +10,7 @@ export default class CreditsScene extends Phaser.Scene {
   }
 
   create() {
-    this.area = this.add.area(config.width / 2, config.height / 2, config.width, config.height);
+    this.area = this.add.zone(config.width / 2, config.height / 2, config.width, config.height);
     this.creditsText = this.add.text(0, 0, 'Credits', { fontSize: '36px', fill: '#000' });
     this.madeByText = this.add.text(0, 0, 'Created By: Oscar Andrés Russi Porras', { fontSize: '24px', fill: '#000' });
     this.emailText = this.add.text(0, 0, 'Email: oscarrussi@outlook.com', { fontSize: '24px', fill: '#000' });
