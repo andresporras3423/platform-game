@@ -1,5 +1,5 @@
 const api = (() => {
-  const url = 'https://us-central1-js-capstone-backend.cloudfunctions.net/api/games/bPWQ2DSLlGN376pNZEH4/scores/';
+  const url = 'https://us-central1-js-capstone-backend.cloudfunctions.net/api/games/Vd5SKbQfAzVOc48DZkxP/scores/';
   const getScore = async () => {
     const response = await fetch(url, {
       method: 'GET',
