@@ -16,16 +16,17 @@ class Game extends Phaser.Game {
     super(config);
     const model = new ModelService();
     this.globals = { model, bgMusic: null, bgMusicGame: null };
-    this.scene.add('Boot', BootScene);
-    this.scene.add('Preloader', PreloaderScene);
-    this.scene.add('Title', TitleScene);
-    this.scene.add('Credits', CreditsScene);
     this.scene.add('Help', HelpScene);
     this.scene.add('Score', ScoreScene);
     this.scene.add('GameOver', GameOverScene);
     this.scene.add('Instructions', InstructionsScene);
     this.scene.add('Game', GameScene);
+    this.scene.add('Boot', BootScene);
+    this.scene.add('Preloader', PreloaderScene);
+    this.scene.add('Title', TitleScene);
+    this.scene.add('Credits', CreditsScene);
     this.scene.start('Boot');
+    
   }
 }
 

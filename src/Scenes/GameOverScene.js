@@ -13,7 +13,7 @@ export default class GameOverScene extends Phaser.Scene {
     this.text = this.add.text(260, 90, `Total Score: ${this.model.score}`, { fontSize: 44, fill: '#000' });
 
     // Game
-    this.gameButton = new Button(this, config.width / 2, config.height / 2 - 100, 'greyButton1', 'greyButton2', 'Play Again', 'Game');
+    this.playButton = new Button(this, config.width / 2, config.height / 2 - 100, 'greyButton1', 'greyButton2', 'Play Again', 'Game');
 
     // Scores
     this.scoresButton = new Button(this, config.width / 2, config.height / 2, 'greyButton1', 'greyButton2', 'Top Ten', 'Score');

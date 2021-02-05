@@ -90,17 +90,18 @@ export default class PreloaderScene extends Phaser.Scene {
     this.timedEvent = this.time.delayedCall(3000, this.ready, [], this);
 
     // load assets needed in our game
-    this.load.image('greyButton1', greyButton1);
-    this.load.image('greyButton2', greyButton2);
-    this.load.audio('bgMusic', [bgMusic]);
-    this.load.audio('bgMusicGame', [bgMusicGame]);
-    this.load.audio('bgGameOverMusic', [bgGameOverMusic]);
     this.load.audio('jumpSound', [jumpSound]);
     this.load.audio('fallSound', [fallSound]);
     this.load.audio('riserSound', [riserSound]);
     this.load.image('heart1', heart);
     this.load.image('heart2', heart);
     this.load.image('heart3', heart);
+    this.load.image('greyButton1', greyButton1);
+    this.load.image('greyButton2', greyButton2);
+    this.load.audio('bgMusic', [bgMusic]);
+    this.load.audio('bgMusicGame', [bgMusicGame]);
+    this.load.audio('bgGameOverMusic', [bgGameOverMusic]);
+    
 
 
     // preloading game assets
