@@ -41,17 +41,17 @@ export default class InstructionsScene extends Phaser.Scene {
     this.levelLabel = this.add.text(50, 50, 'INSTRUCTIONS', this.model.fontStyleTitle);
     this.levelLabel = this.add.text(
       30, 120,
-      '* Use the Enter key to avoid getting caught by cactus.',
+      '1) Use the Enter key to avoid getting caught by cactus',
       this.model.fontStyleLabel,
     );
     this.levelLabel = this.add.text(
       30, 200,
-      '* You\'ll lose one life out of 3 for each cactus that hit you.',
+      '2) You\'ll lose a life out of 3 when a cactus hit you',
       this.model.fontStyleLabel,
     );
     this.levelLabel = this.add.text(
-      30, 280,
-      '* Avoid falling out of the roofs!.',
+      30, 240,
+      'or when you fall out of the platforms!',
       this.model.fontStyleLabel,
     );
 
