@@ -1,76 +1,76 @@
-import { GameLogic } from '../src/Services/gamesetup';
+import { GameSetup } from '../src/Services/gamesetup';
 
 describe('Game initial setup', () => {
   it('The player has 3 lives', () => {
-    GameLogic.newGame();
-    expect(GameLogic.currentLives()).toBe(3);
+    GameSetup.newGame();
+    expect(GameSetup.currentLives()).toBe(3);
   });
 
   it('Score is zero', () => {
-    GameLogic.newGame();
-    expect(GameLogic.currentScore()).not.toBeGreaterThanOrEqual(1);
+    GameSetup.newGame();
+    expect(GameSetup.currentScore()).not.toBeGreaterThanOrEqual(1);
   });
 });
 
 describe('change values', () => {
   it('Score is incremented by 25 when no value is defined', () => {
-    GameLogic.newGame();
-    GameLogic.scoreUp();
-    expect(GameLogic.currentScore()).toBe(25);
+    GameSetup.newGame();
+    GameSetup.scoreUp();
+    expect(GameSetup.currentScore()).toBe(25);
   });
 
   it('Score is incremented by the defined value', () => {
-    GameLogic.newGame();
-    GameLogic.scoreUp(100);
-    expect(GameLogic.currentScore()).toBe(100);
+    GameSetup.newGame();
+    GameSetup.scoreUp(100);
+    expect(GameSetup.currentScore()).toBe(100);
   });
 
   it('Does not increment value when defined is null', () => {
-    GameLogic.newGame();
-    GameLogic.scoreUp(null);
-    expect(GameLogic.currentScore()).toBe(0);
+    GameSetup.newGame();
+    GameSetup.scoreUp(null);
+    expect(GameSetup.currentScore()).toBe(0);
   });
 
   it('Does not increment negative values', () => {
-    GameLogic.newGame();
-    GameLogic.scoreUp(-852);
-    expect(GameLogic.currentScore()).toBe(0);
+    GameSetup.newGame();
+    GameSetup.scoreUp(-852);
+    expect(GameSetup.currentScore()).toBe(0);
   });
 
   it('Lives are decremented by one', () => {
-    GameLogic.newGame();
-    GameLogic.liveDown();
-    expect(GameLogic.currentLives()).toBe(2);
+    GameSetup.newGame();
+    GameSetup.liveDown();
+    expect(GameSetup.currentLives()).toBe(2);
   });
 
   it('Decrements lives until its value is zero', () => {
-    GameLogic.newGame();
-    GameLogic.liveDown();
-    GameLogic.liveDown();
-    GameLogic.liveDown();
-    GameLogic.liveDown();
-    GameLogic.liveDown();
-    expect(GameLogic.currentLives()).toBe(0);
+    GameSetup.newGame();
+    GameSetup.liveDown();
+    GameSetup.liveDown();
+    GameSetup.liveDown();
+    GameSetup.liveDown();
+    GameSetup.liveDown();
+    expect(GameSetup.currentLives()).toBe(0);
   });
 });
 
 describe('Restart Game', () => {
   it('Score value is zero after calling newGame', () => {
-    GameLogic.newGame();
-    GameLogic.liveDown();
-    GameLogic.liveDown();
-    GameLogic.scoreUp();
-    GameLogic.scoreUp();
-    GameLogic.newGame();
-    expect(GameLogic.currentScore()).toBe(0);
+    GameSetup.newGame();
+    GameSetup.liveDown();
+    GameSetup.liveDown();
+    GameSetup.scoreUp();
+    GameSetup.scoreUp();
+    GameSetup.newGame();
+    expect(GameSetup.currentScore()).toBe(0);
   });
   it('Lives value is 3 after calling newGame', () => {
-    GameLogic.newGame();
-    GameLogic.liveDown();
-    GameLogic.liveDown();
-    GameLogic.scoreUp();
-    GameLogic.scoreUp();
-    GameLogic.newGame();
-    expect(GameLogic.currentLives()).toBe(3);
+    GameSetup.newGame();
+    GameSetup.liveDown();
+    GameSetup.liveDown();
+    GameSetup.scoreUp();
+    GameSetup.scoreUp();
+    GameSetup.newGame();
+    expect(GameSetup.currentLives()).toBe(3);
   });
 });

@@ -1,4 +1,4 @@
-export const GameLogic = (() => {
+export const GameSetup = (() => {
   let lives = 3;
   let score = 0;
 
@@ -33,4 +33,4 @@ export const GameLogic = (() => {
   };
 })();
 
-export default GameLogic;
+export default GameSetup;
