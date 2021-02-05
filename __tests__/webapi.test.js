@@ -45,10 +45,17 @@ test('expect saveScore dont returns a successful message when name is empty', ()
     });
 });
 
+test('expect saveScore successful even if score is 0', () => {
+  webapi.saveScore('Andres', 0)
+    .then((response) => {
+      expect(response).resolves.not.toBe('Leaderboard score created correctly.');
+    });
+});
+
 test('expect saveScore fail if name is null', () => {
   webapi.saveScore(null, 10)
     .then((response) => {
-      expect(response).resolves.not.toBe('Leaderboard score created correctly.');
+      expect(response).resolves.toBe('Leaderboard score created correctly.');
     });
 });
 
