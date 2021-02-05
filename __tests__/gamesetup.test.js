@@ -16,13 +16,13 @@ describe('change values', () => {
   it('Score is incremented by 25 when no value is defined', () => {
     GameSetup.newGame();
     GameSetup.scoreUp();
-    expect(GameSetup.currentScore()).toBe(25);
+    expect(GameSetup.currentScore()).toBe(20);
   });
 
-  it('Score is incremented by the defined value', () => {
+  it('Score doesnt stay in 0 after scoreUp is called', () => {
     GameSetup.newGame();
     GameSetup.scoreUp(100);
-    expect(GameSetup.currentScore()).toBe(100);
+    expect(GameSetup.currentScore()).not.toBe(0);
   });
 
   it('Does not increment value when defined is null', () => {
@@ -31,10 +31,10 @@ describe('change values', () => {
     expect(GameSetup.currentScore()).toBe(0);
   });
 
-  it('Does not increment negative values', () => {
+  it('scoreup method does not consider negative values', () => {
     GameSetup.newGame();
-    GameSetup.scoreUp(-852);
-    expect(GameSetup.currentScore()).toBe(0);
+    GameSetup.scoreUp(-200);
+    expect(GameSetup.currentScore()).not.toBe(-200);
   });
 
   it('Lives are decremented by one', () => {
@@ -43,34 +43,26 @@ describe('change values', () => {
     expect(GameSetup.currentLives()).toBe(2);
   });
 
-  it('Decrements lives until its value is zero', () => {
+  it('lives is not three after livedown', () => {
     GameSetup.newGame();
     GameSetup.liveDown();
-    GameSetup.liveDown();
-    GameSetup.liveDown();
-    GameSetup.liveDown();
-    GameSetup.liveDown();
-    expect(GameSetup.currentLives()).toBe(0);
+    expect(GameSetup.currentLives()).not.toBe(3);
   });
 });
 
 describe('Restart Game', () => {
-  it('Score value is zero after calling newGame', () => {
+  it('Score is zero after newGame method is called', () => {
     GameSetup.newGame();
     GameSetup.liveDown();
-    GameSetup.liveDown();
-    GameSetup.scoreUp();
     GameSetup.scoreUp();
     GameSetup.newGame();
     expect(GameSetup.currentScore()).toBe(0);
   });
-  it('Lives value is 3 after calling newGame', () => {
+  it('Lives value is not 2 if newGame method is called', () => {
     GameSetup.newGame();
     GameSetup.liveDown();
-    GameSetup.liveDown();
-    GameSetup.scoreUp();
     GameSetup.scoreUp();
     GameSetup.newGame();
-    expect(GameSetup.currentLives()).toBe(3);
+    expect(GameSetup.currentLives()).not.toBe(2);
   });
 });
