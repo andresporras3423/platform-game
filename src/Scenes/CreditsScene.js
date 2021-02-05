@@ -10,13 +10,12 @@ export default class CreditsScene extends Phaser.Scene {
   }
 
   create() {
+    this.area = this.add.area(config.width / 2, config.height / 2, config.width, config.height);
     this.creditsText = this.add.text(0, 0, 'Credits', { fontSize: '36px', fill: '#000' });
     this.madeByText = this.add.text(0, 0, 'Created By: Oscar Andrés Russi Porras', { fontSize: '24px', fill: '#000' });
     this.emailText = this.add.text(0, 0, 'Email: oscarrussi@outlook.com', { fontSize: '24px', fill: '#000' });
     this.linkedinText = this.add.text(0, 0, 'LinkedIn: linkedin.com/in/oscar-andres-russi-porras/', { fontSize: '24px', fill: '#000' });
     this.portfolioText = this.add.text(0, 0, 'Portfolio: andresporras3423.github.io/my-portfolio/', { fontSize: '24px', fill: '#000' });
-    this.zone = this.add.zone(config.width / 2, config.height / 2, config.width, config.height);
-
 
     let elements = [this.creditsText, this.madeByText, this.emailText, this.linkedinText, this.portfolioText];
     this.madeByTween;
@@ -28,7 +27,7 @@ export default class CreditsScene extends Phaser.Scene {
     for(let i=0; i<5; i+=1){
       Phaser.Display.Align.In.Center(
         elements[i],
-        this.zone,
+        this.area,
       );
       for(let j=0; j<5; j+=1){
         if(j>0) {

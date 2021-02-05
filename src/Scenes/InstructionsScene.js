@@ -1,7 +1,17 @@
 import Phaser from 'phaser';
 import ButtonWithCallback from '../Elements/Button';
 
-const validateKeys = (e) => {
+const enterKey = (e) => {
+  if (
+    e.key === 'Enter'
+  ) {
+    return true;
+  }
+  return false;
+};
+
+
+const checkKeys = (e) => {
   if (
     e.key !== 'Backspace'
         && e.key !== 'Enter'
@@ -14,16 +24,6 @@ const validateKeys = (e) => {
   }
   return false;
 };
-
-const isEnterKey = (e) => {
-  if (
-    e.key === 'Enter'
-  ) {
-    return true;
-  }
-  return false;
-};
-
 
 export default class InstructionsScene extends Phaser.Scene {
   constructor() {
@@ -59,13 +59,13 @@ export default class InstructionsScene extends Phaser.Scene {
     this.nameText = this.add.text(300, 390, ' ... ', this.model.fontStyleTitle);
 
     this.input.keyboard.on('keydown', (e) => {
-      if (validateKeys(e)) {
+      if (checkKeys(e)) {
         this.playerName += e.key;
         this.nameText.setText(this.playerName);
       } else if (e.key === 'Backspace' && this.playerName.length > 0) {
         this.playerName = this.playerName.slice(0, -1);
         this.nameText.setText(this.playerName);
-      } else if (isEnterKey(e)) {
+      } else if (enterKey(e)) {
         this.saveName(this.playerName);
         this.scene.start('Game');
       }

@@ -1,6 +1,6 @@
 import Phaser from 'phaser';
 import phaserLogo from '../assets/logo.png';
-import splashScreen from '../assets/kitkit-logo.png';
+import secondScreen from '../assets/second-screen.png';
 
 export default class BootScene extends Phaser.Scene {
   constructor() {
@@ -9,8 +9,8 @@ export default class BootScene extends Phaser.Scene {
   }
 
   preload() {
+    this.load.image('logo', secondScreen);
     this.load.image('phaserLogo', phaserLogo);
-    this.load.image('logo', splashScreen);
   }
 
   create() {

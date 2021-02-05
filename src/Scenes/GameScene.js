@@ -3,19 +3,19 @@
 /* eslint-disable no-undef */
 /* eslint-disable import/no-named-as-default */
 import Phaser from 'phaser';
-import gameOptions from '../Options/gameOptions';
-import config from '../Options/config';
 import webapi from '../Services/webapi';
 import GameLogic from '../Services/gamelogic';
+import gameOptions from '../Options/gameOptions';
+import config from '../Options/config';
 
 export default class GameScene extends Phaser.Scene {
   constructor() {
     super('Game');
+    this.model = {};
     this.keys = {};
     this.heart1 = {};
     this.heart2 = {};
     this.heart3 = {};
-    this.model = {};
   }
 
   // the core of the script: platform are added from the pool or created on the fly
@@ -24,10 +24,10 @@ export default class GameScene extends Phaser.Scene {
     let platform;
     if (this.platformPool.getLength()) {
       platform = this.platformPool.getFirst();
-      platform.x = posX;
-      platform.y = posY;
       platform.active = true;
       platform.visible = true;
+      platform.x = posX;
+      platform.y = posY;
       this.platformPool.remove(platform);
       platform.displayWidth = platformWidth;
       platform.tileScaleX = 1 / platform.scaleX;
