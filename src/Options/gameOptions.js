@@ -17,7 +17,7 @@ const gameOptions = {
   // player gravity
   playerGravity: 1500,
   // player jump force
-  jumpForce: 350,
+  jumpForce: 400,
   // player starting X position
   playerStartPosition: 300,
   // consecutive jumps allowed

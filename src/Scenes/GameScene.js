@@ -454,6 +454,7 @@ export default class GameScene extends Phaser.Scene {
 
 function resize() {
   const canvas = document.querySelector('canvas');
+  canvas.style.border="5px solid grey";
   const windowWidth = window.innerWidth;
   const windowHeight = window.innerHeight;
   const windowRatio = windowWidth / windowHeight;
