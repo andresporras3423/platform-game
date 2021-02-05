@@ -1,8 +1,8 @@
 const gameOptions = {
   // platform speed range, in pixels per second
   platformSpeedRange: [300, 300],
-  // building speed, in pixels per second
-  buildingSpeed: 80,
+  // clouds speed, in pixels per second
+  cloudSpeed: 80,
   // spawn range, how far should be the rightmost platform from the right edge
   // before next platform spawns, in pixels
   spawnRange: [100, 150],

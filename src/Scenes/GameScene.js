@@ -121,29 +121,29 @@ export default class GameScene extends Phaser.Scene {
     }
   }
 
-  // adding buildings
-  addbuildings() {
-    const rightmostbuilding = this.getRightmostbuilding();
-    if (rightmostbuilding < config.width * 2) {
-      const building = this.physics.add.sprite(rightmostbuilding + Phaser.Math.Between(100, 350), config.height + Phaser.Math.Between(0, 100), 'building');
-      building.setOrigin(0.5, 1);
-      building.body.setVelocityX(gameOptions.buildingSpeed * -1);
-      this.buildingGroup.add(building);
+  // adding clouds
+  addclouds() {
+    const rightmostcloud = this.getRightmostcloud();
+    if (rightmostcloud < config.width * 2) {
+      const cloud = this.physics.add.sprite(rightmostcloud + Phaser.Math.Between(100, 350), config.height + Phaser.Math.Between(0, 100), 'cloud');
+      cloud.setOrigin(0.5, 1);
+      cloud.body.setVelocityX(gameOptions.cloudSpeed * -1);
+      this.cloudGroup.add(cloud);
       if (Phaser.Math.Between(0, 1)) {
-        building.setDepth(1);
+        cloud.setDepth(1);
       }
-      building.setFrame(Phaser.Math.Between(0, 3));
-      this.addbuildings();
+      cloud.setFrame(Phaser.Math.Between(0, 3));
+      this.addclouds();
     }
   }
 
-  // getting rightmost building x position
-  getRightmostbuilding() {
-    let rightmostbuilding = -200;
-    this.buildingGroup.getChildren().forEach((building) => {
-      rightmostbuilding = Math.max(rightmostbuilding, building.x);
+  // getting rightmost cloud x position
+  getRightmostcloud() {
+    let rightmostcloud = -200;
+    this.cloudGroup.getChildren().forEach((cloud) => {
+      rightmostcloud = Math.max(rightmostcloud, cloud.x);
     });
-    return rightmostbuilding;
+    return rightmostcloud;
   }
 
   addScoreDisplay() {
@@ -196,7 +196,7 @@ export default class GameScene extends Phaser.Scene {
   }
 
   saveScore(callback) {
-    api.saveScore(this.model.playerName === '' ? 'Anonymous' : this.model.playerName, GameLogic.currentScore()).then(() => {
+    api.saveScore(this.model.playerName === '' ? 'Anon' : this.model.playerName, GameLogic.currentScore()).then(() => {
       callback();
     });
   }
@@ -208,8 +208,8 @@ export default class GameScene extends Phaser.Scene {
   }
 
   create() {
-    // group with all active buildings.
-    this.buildingGroup = this.add.group();
+    // group with all active clouds.
+    this.cloudGroup = this.add.group();
 
     // group with all active platforms.
     this.platformGroup = this.add.group({
@@ -261,8 +261,8 @@ export default class GameScene extends Phaser.Scene {
       },
     });
 
-    // adding a building
-    this.addbuildings();
+    // adding a cloud
+    this.addclouds();
 
     // keeping track of added platforms
     this.addedPlatforms = 0;
@@ -413,15 +413,15 @@ export default class GameScene extends Phaser.Scene {
       }
     }, this);
 
-    // recycling buildings
-    this.buildingGroup.getChildren().forEach(function (building) {
-      if (building.x < -building.displayWidth) {
-        const rightmostbuilding = this.getRightmostbuilding();
-        building.x = rightmostbuilding + Phaser.Math.Between(100, 350);
-        building.y = config.height + Phaser.Math.Between(0, 100);
-        building.setFrame(Phaser.Math.Between(0, 3));
+    // recycling clouds
+    this.cloudGroup.getChildren().forEach(function (cloud) {
+      if (cloud.x < -cloud.displayWidth) {
+        const rightmostcloud = this.getRightmostcloud();
+        cloud.x = rightmostcloud + Phaser.Math.Between(100, 350);
+        cloud.y = config.height + Phaser.Math.Between(0, 100);
+        cloud.setFrame(Phaser.Math.Between(0, 3));
         if (Phaser.Math.Between(0, 1)) {
-          building.setDepth(1);
+          cloud.setDepth(1);
         }
       }
     }, this);

@@ -115,8 +115,8 @@ export default class PreloaderScene extends Phaser.Scene {
       frameWidth: 40,
       frameHeight: 40,
     });
-    // building are a sprite sheet made by 512x512 pixels
-    this.load.spritesheet('building', cloud, {
+    // cloud are a sprite sheet made by 512x512 pixels
+    this.load.spritesheet('cloud', cloud, {
       frameWidth: 1024,
       frameHeight: 1024,
     });
