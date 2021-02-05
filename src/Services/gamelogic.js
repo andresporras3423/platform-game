@@ -13,22 +13,23 @@ export const GameLogic = (() => {
     }
   };
 
-  const currentLives = () => lives;
-
-  const currentScore = () => score;
-
-  const scoreUp = (points = 25) => {
+  const scoreUp = (points = 20) => {
     if (points > 0) {
       score += points;
     }
   };
 
+  const currentScore = () => score;
+
+  const currentLives = () => lives;
+
+
   return {
     newGame,
-    liveDown,
     currentLives,
-    currentScore,
     scoreUp,
+    currentScore,
+    liveDown,
   };
 })();
 

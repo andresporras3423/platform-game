@@ -1,18 +1,18 @@
 import { GameLogic } from '../src/Services/gamelogic';
 
-describe('Game initial values', () => {
-  it('Score is zero', () => {
-    GameLogic.newGame();
-    expect(GameLogic.currentScore()).toBe(0);
-  });
-
+describe('Game initial setup', () => {
   it('The player has 3 lives', () => {
     GameLogic.newGame();
     expect(GameLogic.currentLives()).toBe(3);
   });
+
+  it('Score is zero', () => {
+    GameLogic.newGame();
+    expect(GameLogic.currentScore()).not.toBeGreaterThanOrEqual(1);
+  });
 });
 
-describe('update values', () => {
+describe('change values', () => {
   it('Score is incremented by 25 when no value is defined', () => {
     GameLogic.newGame();
     GameLogic.scoreUp();
