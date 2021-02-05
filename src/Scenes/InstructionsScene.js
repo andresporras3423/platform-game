@@ -80,7 +80,7 @@ export default class InstructionsScene extends Phaser.Scene {
 
   saveName(name) {
     if (name === '') {
-      this.model.playerName = 'Anonymous';
+      this.model.playerName = 'Anon';
     } else {
       this.model.playerName = name;
     }

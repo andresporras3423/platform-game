@@ -3,9 +3,9 @@ export default class model {
   constructor() {
     this._soundOn = true;
     this._musicOn = true;
-    this._bgMusicPlaying = false;
+    this._bgMusic = false;
     this._score = 0;
-    this._playerName = 'Anonymous';
+    this._playerName = 'Anon';
     this._fontStyleLabel = {};
     this._fontStyleTitle = {};
   }
@@ -26,12 +26,12 @@ export default class model {
     return this._soundOn;
   }
 
-  set bgMusicPlaying(value) {
-    this._bgMusicPlaying = value;
+  set bgMusic(value) {
+    this._bgMusic = value;
   }
 
-  get bgMusicPlaying() {
-    return this._bgMusicPlaying;
+  get bgMusic() {
+    return this._bgMusic;
   }
 
   set score(value) {
@@ -52,7 +52,6 @@ export default class model {
 
   get fontStyleLabel() {
     this._fontStyleLabel = {
-      // font: '"Roboto"',
       fontSize: 22,
       fill: '#000',
     };
@@ -61,7 +60,6 @@ export default class model {
 
   get fontStyleTitle() {
     this._fontStyleTitle = {
-      // font: '"Roboto"',
       fontSize: 26,
       fill: '#000',
     };

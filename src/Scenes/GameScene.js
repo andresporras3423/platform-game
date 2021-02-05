@@ -327,9 +327,9 @@ export default class GameScene extends Phaser.Scene {
     }, null, this);
 
     this.model = this.sys.game.globals.model;
-    if (this.model.musicOn === true && this.model.bgMusicPlaying === true) {
+    if (this.model.musicOn === true && this.model.bgMusic === true) {
       this.sys.game.globals.bgMusic.stop();
-      this.model.bgMusicPlaying = false;
+      this.model.bgMusic = false;
       this.bgMusicGame = this.sound.add('bgMusicGame', { volume: 0.5, loop: true });
       this.bgMusicGame.play();
       this.sys.game.globals.bgMusicGame = this.bgMusicGame;
@@ -351,7 +351,7 @@ export default class GameScene extends Phaser.Scene {
           game.model.score = GameSetup.currentScore();
           game.scene.start('GameOver');
           game.sys.game.globals.bgMusic.play();
-          game.model.bgMusicPlaying = true;
+          game.model.bgMusic = true;
           GameSetup.newGame();
         }), [], this);
       } else {
@@ -379,7 +379,7 @@ export default class GameScene extends Phaser.Scene {
           game.model.score = GameSetup.currentScore();
           game.scene.start('GameOver');
           game.sys.game.globals.bgMusic.play();
-          game.model.bgMusicPlaying = true;
+          game.model.bgMusic = true;
           GameSetup.newGame();
         }), [], this);
       } else {
