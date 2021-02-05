@@ -1,5 +1,6 @@
 import Phaser from 'phaser';
 import ButtonWithCallback from '../Elements/Button';
+import Button from '../Elements/Button';
 
 const enterKey = (e) => {
   if (
@@ -45,18 +46,18 @@ export default class InstructionsScene extends Phaser.Scene {
       this.model.fontStyleLabel,
     );
     this.levelLabel = this.add.text(
-      30, 200,
+      30, 160,
       '2) You\'ll lose a life out of 3 when a cactus hit you',
       this.model.fontStyleLabel,
     );
     this.levelLabel = this.add.text(
-      30, 240,
+      30, 180,
       'or when you fall out of the platforms!',
       this.model.fontStyleLabel,
     );
 
-    this.nameLabel = this.add.text(300, 360, 'Enter your name:', this.model.fontStyleTitle);
-    this.nameText = this.add.text(300, 390, ' ... ', this.model.fontStyleTitle);
+    this.nameLabel = this.add.text(300, 300, 'Enter your name:', this.model.fontStyleTitle);
+    this.nameText = this.add.text(300, 330, ' ... ', this.model.fontStyleTitle);
 
     this.input.keyboard.on('keydown', (e) => {
       if (checkKeys(e)) {
@@ -73,7 +74,8 @@ export default class InstructionsScene extends Phaser.Scene {
       }
     });
 
-    this.menuButton = new ButtonWithCallback(this, 400, 500, 'greyButton1', 'greyButton2', 'Start!', 'Game', this.invokeSaving);
+    this.startButton = new ButtonWithCallback(this, 400, 400, 'greyButton1', 'greyButton2', 'Start!', 'Game', this.invokeSaving);
+    this.menuButton = new Button(this, 400, 480, 'greyButton1', 'greyButton2', 'Menu', 'Title');
   }
 
   saveName(name) {
