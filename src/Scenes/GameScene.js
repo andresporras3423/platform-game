@@ -149,21 +149,21 @@ export default class GameScene extends Phaser.Scene {
   addScoreDisplay() {
     switch (GameLogic.currentLives()) {
       case (1):
-        this.heart1 = this.add.image(40, 40, 'heart1');
+        this.heart1 = this.add.image(config.width - 80, 40, 'heart1');
         break;
       case 2:
-        this.heart1 = this.add.image(40, 40, 'heart1');
-        this.heart2 = this.add.image(80, 40, 'heart2');
+        this.heart1 = this.add.image(config.width - 80, 40, 'heart1');
+        this.heart2 = this.add.image(config.width - 120, 40, 'heart2');
         break;
       case 3:
-        this.heart1 = this.add.image(40, 40, 'heart1');
-        this.heart2 = this.add.image(80, 40, 'heart2');
-        this.heart3 = this.add.image(120, 40, 'heart3');
+        this.heart1 = this.add.image(config.width - 80, 40, 'heart1');
+        this.heart2 = this.add.image(config.width - 120, 40, 'heart2');
+        this.heart3 = this.add.image(config.width - 160, 40, 'heart3');
         break;
       default:
         break;
     }
-    this.scoreText = this.add.text(config.width - 200, 40, `Score: ${GameLogic.currentScore()}`, {
+    this.scoreText = this.add.text(40, 40, `Score: ${GameLogic.currentScore()}`, {
       fontSize: 20,
       fill: '#000',
     });
