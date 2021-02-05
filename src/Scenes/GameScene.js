@@ -5,7 +5,7 @@
 import Phaser from 'phaser';
 import gameOptions from '../Options/gameOptions';
 import config from '../Options/config';
-import api from '../Services/api';
+import webapi from '../Services/webapi';
 import GameLogic from '../Services/gamelogic';
 
 export default class GameScene extends Phaser.Scene {
@@ -196,7 +196,7 @@ export default class GameScene extends Phaser.Scene {
   }
 
   saveScore(callback) {
-    api.saveScore(this.model.playerName === '' ? 'Anon' : this.model.playerName, GameLogic.currentScore()).then(() => {
+    webapi.saveScore(this.model.playerName === '' ? 'Anon' : this.model.playerName, GameLogic.currentScore()).then(() => {
       callback();
     });
   }
