@@ -6,8 +6,8 @@ export default class model {
     this._bgMusic = false;
     this._score = 0;
     this._playerName = 'Anon';
-    this._fontStyleLabel = {};
-    this._fontStyleTitle = {};
+    this._fontLabel = {};
+    this._fontTitle = {};
   }
 
   set musicOn(value) {
@@ -50,19 +50,19 @@ export default class model {
     return this._playerName;
   }
 
-  get fontStyleLabel() {
-    this._fontStyleLabel = {
+  get fontLabel() {
+    this._fontLabel = {
       fontSize: 22,
       fill: '#000',
     };
-    return this._fontStyleLabel;
+    return this._fontLabel;
   }
 
-  get fontStyleTitle() {
-    this._fontStyleTitle = {
+  get fontTitle() {
+    this._fontTitle = {
       fontSize: 26,
       fill: '#000',
     };
-    return this._fontStyleTitle;
+    return this._fontTitle;
   }
 }

@@ -44,24 +44,24 @@ test('playerName can be updated', () => {
   expect(myModel.playerName).not.toEqual('Anon');
 });
 
-test('fontStyleTitle has the initial properties', () => {
+test('fontTitle has the initial properties', () => {
   const myModel = new Model();
-  expect(myModel.fontStyleTitle).toMatchObject({ fontSize: 26, fill: '#000' });
+  expect(myModel.fontTitle).toMatchObject({ fontSize: 26, fill: '#000' });
 });
 
-test('expect fontStyleLabel has the initial properties, fontsize is not 26', () => {
+test('expect fontLabel has the initial properties, fontsize is not 26', () => {
   const myModel = new Model();
-  expect(myModel.fontStyleLabel).not.toMatchObject({ fontSize: 26, fill: '#000' });
+  expect(myModel.fontLabel).not.toMatchObject({ fontSize: 26, fill: '#000' });
 });
 
-test('expect fontStyleTitle atrribute fontSize contains a number', () => {
+test('expect fontTitle atrribute fontSize contains a number', () => {
   const myModel = new Model();
-  expect(myModel.fontStyleTitle).toEqual(expect.objectContaining({ fontSize: expect.any(Number) }));
+  expect(myModel.fontTitle).toEqual(expect.objectContaining({ fontSize: expect.any(Number) }));
 });
 
-test('expect fontStyleLabel attribute fontSize contains a number', () => {
+test('expect fontLabel attribute fontSize contains a number', () => {
   const myModel = new Model();
-  expect(myModel.fontStyleLabel).toEqual(expect.objectContaining({ fontSize: expect.any(Number) }));
+  expect(myModel.fontLabel).toEqual(expect.objectContaining({ fontSize: expect.any(Number) }));
 });
 
 test('expect music is on at the beggining of the game', () => {

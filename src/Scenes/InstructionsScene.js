@@ -39,25 +39,25 @@ export default class InstructionsScene extends Phaser.Scene {
 
   create() {
     this.model = this.sys.game.globals.model;
-    this.levelLabel = this.add.text(50, 50, 'INSTRUCTIONS', this.model.fontStyleTitle);
+    this.levelLabel = this.add.text(50, 50, 'INSTRUCTIONS', this.model.fontTitle);
     this.levelLabel = this.add.text(
       30, 120,
       '1) Use the Enter key to avoid getting caught by cactus',
-      this.model.fontStyleLabel,
+      this.model.fontLabel,
     );
     this.levelLabel = this.add.text(
       30, 160,
       '2) You\'ll lose a life out of 3 when a cactus hit you',
-      this.model.fontStyleLabel,
+      this.model.fontLabel,
     );
     this.levelLabel = this.add.text(
       30, 180,
       'or when you fall out of the platforms!',
-      this.model.fontStyleLabel,
+      this.model.fontLabel,
     );
 
-    this.nameLabel = this.add.text(300, 300, 'Enter your name:', this.model.fontStyleTitle);
-    this.nameText = this.add.text(300, 330, ' ... ', this.model.fontStyleTitle);
+    this.nameLabel = this.add.text(300, 300, 'Enter your name:', this.model.fontTitle);
+    this.nameText = this.add.text(300, 330, ' ... ', this.model.fontTitle);
 
     this.input.keyboard.on('keydown', (e) => {
       if (checkKeys(e)) {
