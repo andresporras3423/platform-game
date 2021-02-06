@@ -110,7 +110,7 @@ export default class GameScene extends Phaser.Scene {
                     && this.playerJumps < gameOptions.jumps))) {
       if (this.player.body.touching.down) {
         if (GameSetup.currentLives() !== 0) {
-          this.jumpSound = this.sound.add('jumpSound', { volume: 0.4, loop: false });
+          this.jumpSound = this.sound.add('jumpSound', { volume: 0.1, loop: false });
           this.jumpSound.play();
         }
         this.playerJumps = 0;
@@ -297,7 +297,7 @@ export default class GameScene extends Phaser.Scene {
 
     // setting collisions between the player and the meat group
     this.physics.add.overlap(this.player, this.meatGroup, function (player, meat) {
-      this.riserSound = this.sound.add('riserSound', { volume: 0.5, loop: false });
+      this.riserSound = this.sound.add('riserSound', { volume: 0.2, loop: false });
       this.riserSound.play();
       this.scoreUp(50);
       this.tweens.add({
