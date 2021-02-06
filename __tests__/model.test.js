@@ -49,27 +49,27 @@ test('fontTitle has the initial properties', () => {
   expect(myModel.fontTitle).toMatchObject({ fontSize: 26, fill: '#000' });
 });
 
-test('expect fontLabel has the initial properties, fontsize is not 26', () => {
+test('fontLabel has the initial properties, fontsize is not 26', () => {
   const myModel = new Model();
   expect(myModel.fontLabel).not.toMatchObject({ fontSize: 26, fill: '#000' });
 });
 
-test('expect fontTitle atrribute fontSize contains a number', () => {
+test('fontTitle atrribute fontSize contains a number', () => {
   const myModel = new Model();
   expect(myModel.fontTitle).toEqual(expect.objectContaining({ fontSize: expect.any(Number) }));
 });
 
-test('expect fontLabel attribute fontSize contains a number', () => {
+test('fontLabel attribute fontSize does not contain a string', () => {
   const myModel = new Model();
-  expect(myModel.fontLabel).toEqual(expect.objectContaining({ fontSize: expect.any(Number) }));
+  expect(myModel.fontLabel).not.toEqual(expect.objectContaining({ fontSize: expect.any(String) }));
 });
 
-test('expect music is on at the beggining of the game', () => {
+test('music is on when the game start', () => {
   const myModel = new Model();
   expect(myModel.musicOn).toEqual(true);
 });
 
-test('expect musicOn can be set to false', () => {
+test('music can be update to false', () => {
   const myModel = new Model();
   myModel.musicOn = false;
   expect(myModel.musicOn).toEqual(false);
