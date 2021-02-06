@@ -47,10 +47,10 @@ export default class CreditsScene extends Phaser.Scene {
             ease: 'Power1',
             duration: 8000,
             delay: 500 * k,
-            onComplete: function startScene() {
+            onComplete: () => {
               // tweenElements[k].destroy();
               this.scene.start('Title');
-            }.bind(this),
+            },
           });
         } else {
           this.tweens.add({

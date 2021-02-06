@@ -283,18 +283,22 @@ export default class GameScene extends Phaser.Scene {
     // the player is not dying
     this.dying = false;
 
-    // setting collisions between the player and the platform group
-    this.physics.add.collider(this.player, this.platformGroup, function runAnimation() {
+    const runAnimation = (player) => {
       // play "run" animation if the player is on a platform
-      if (!this.player.anims.isPlaying) {
-        this.player.anims.play('run');
+      if (!player.anims.isPlaying) {
+        player.anims.play('run');
       }
-    }, null, this);
+    };
+
+    // setting collisions between the player and the platform group
+    this.physics.add.collider(this.player,
+      this.platformGroup,
+      runAnimation(this.player), null, this);
 
     // setting collisions between the player and the meat group
     this.physics.add.overlap(this.player,
       this.meatGroup,
-      function collisionPlayerMeat(player, meat) {
+      (player, meat) => {
         this.riserSound = this.sound.add('riserSound', { volume: 0.2, loop: false });
         this.riserSound.play();
         this.scoreUp(50);
@@ -312,8 +316,9 @@ export default class GameScene extends Phaser.Scene {
         });
       }, null, this);
 
+
     // setting collisions between the player and the cactus group
-    this.physics.add.overlap(this.player, this.cactusGroup, function collisionPlayerCactus() {
+    this.physics.add.overlap(this.player, this.cactusGroup, () => {
       this.player.y = 10000;
       this.dying = true;
       this.player.anims.stop();
@@ -387,7 +392,7 @@ export default class GameScene extends Phaser.Scene {
     // recycling platforms
     let minDistance = config.width;
     let rightmostPlatformHeight = 0;
-    this.platformGroup.getChildren().forEach(function reusePlatform(platform) {
+    this.platformGroup.getChildren().forEach((platform) => {
       const platformDistance = config.width - platform.x - platform.displayWidth / 2;
       if (platformDistance < minDistance) {
         minDistance = platformDistance;
@@ -400,7 +405,7 @@ export default class GameScene extends Phaser.Scene {
     }, this);
 
     // recycling meats
-    this.meatGroup.getChildren().forEach(function reuseMeat(meat) {
+    this.meatGroup.getChildren().forEach((meat) => {
       if (meat.x < -meat.displayWidth / 2) {
         this.meatGroup.killAndHide(meat);
         this.meatGroup.remove(meat);
@@ -408,7 +413,7 @@ export default class GameScene extends Phaser.Scene {
     }, this);
 
     // recycling cactus
-    this.cactusGroup.getChildren().forEach(function reuseCactus(cactus) {
+    this.cactusGroup.getChildren().forEach((cactus) => {
       if (cactus.x < -cactus.displayWidth / 2) {
         this.cactusGroup.killAndHide(cactus);
         this.cactusGroup.remove(cactus);
@@ -416,7 +421,7 @@ export default class GameScene extends Phaser.Scene {
     }, this);
 
     // recycling clouds
-    this.cloudGroup.getChildren().forEach(function reuseClouds(cloud) {
+    this.cloudGroup.getChildren().forEach((cloud) => {
       if (cloud.x < -cloud.displayWidth) {
         const rightmostcloud = this.getRightmostcloud();
         cloud.x = rightmostcloud + Phaser.Math.Between(100, 350);
@@ -448,7 +453,7 @@ export default class GameScene extends Phaser.Scene {
   }
 }
 
-function resize() {
+const resize = () => {
   const canvas = document.querySelector('canvas');
   canvas.style.border = '5px solid grey';
   const windowWidth = window.innerWidth;
@@ -462,7 +467,7 @@ function resize() {
     canvas.style.width = `${windowHeight * gameRatio}px`;
     canvas.style.height = `${windowHeight}px`;
   }
-}
+};
 
 window.onload = () => {
   window.focus();
