@@ -1,6 +1,3 @@
-/* eslint-disable func-names */
-/* eslint-disable no-undef */
-/* eslint-disable no-unused-expressions */
 import Phaser from 'phaser';
 import config from '../Options/config';
 
@@ -17,12 +14,20 @@ export default class CreditsScene extends Phaser.Scene {
     this.linkedinText = this.add.text(0, 0, 'LinkedIn: linkedin.com/in/oscar-andres-russi-porras/', { fontSize: '24px', fill: '#000' });
     this.portfolioText = this.add.text(0, 0, 'Portfolio: andresporras3423.github.io/my-portfolio/', { fontSize: '24px', fill: '#000' });
 
-    const elements = [this.creditsText, this.madeByText, this.emailText, this.linkedinText, this.portfolioText];
-    this.madeByTween;
-    this.emailTween;
-    this.linkedinTween;
-    this.portfolioTween;
-    const tweenElements = [null, this.madeByTween, this.emailTween, this.linkedinTween, this.portfolioTween];
+    const elements = [this.creditsText,
+      this.madeByText,
+      this.emailText,
+      this.linkedinText,
+      this.portfolioText];
+    // this.madeByTween;
+    // this.emailTween;
+    // this.linkedinTween;
+    // this.portfolioTween;
+    const tweenElements = [null,
+      this.madeByTween,
+      this.emailTween,
+      this.linkedinTween,
+      this.portfolioTween];
 
     for (let i = 0; i < 5; i += 1) {
       Phaser.Display.Align.In.Center(
@@ -34,7 +39,7 @@ export default class CreditsScene extends Phaser.Scene {
           elements[j].setY(400 + (j * 200));
         }
       }
-      for (let k = 0; k < 5; k++) {
+      for (let k = 0; k < 5; k += 1) {
         if (k > 0) {
           tweenElements[k] = this.tweens.add({
             targets: elements[k],
@@ -42,8 +47,8 @@ export default class CreditsScene extends Phaser.Scene {
             ease: 'Power1',
             duration: 8000,
             delay: 500 * k,
-            onComplete: function () {
-              tweenElements[k].destroy;
+            onComplete: function startScene() {
+              // tweenElements[k].destroy();
               this.scene.start('Title');
             }.bind(this),
           });
@@ -54,9 +59,9 @@ export default class CreditsScene extends Phaser.Scene {
             ease: 'Power1',
             duration: 8000,
             delay: 500 * k,
-            onComplete() {
-              this.destroy;
-            },
+            // onComplete() {
+            // this.destroy();
+            // },
           });
         }
       }

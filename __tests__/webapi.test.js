@@ -27,7 +27,8 @@ test('getScore should return an array', () => {
 test('getScore should not bring score in ascending order', () => {
   webapi.getScore()
     .then((response) => {
-      expect(response).not.toEqual(expect.arrayContaining(response.sort((a, b) => a.score - b.score)));
+      const expected = expect.arrayContaining(response.sort((a, b) => a.score - b.score));
+      expect(response).not.toEqual(expected);
     });
 });
 

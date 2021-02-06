@@ -1,10 +1,6 @@
-/* eslint-disable func-names */
-/* eslint-disable no-unused-expressions */
-/* eslint-disable no-undef */
-/* eslint-disable import/no-named-as-default */
 import Phaser from 'phaser';
 import webapi from '../Services/webapi';
-import GameSetup from '../Services/gamesetup';
+import gameSetup from '../Services/gamesetup';
 import gameOptions from '../Options/gameOptions';
 import config from '../Options/config';
 
@@ -109,7 +105,7 @@ export default class GameScene extends Phaser.Scene {
                 || (this.playerJumps > 0
                     && this.playerJumps < gameOptions.jumps))) {
       if (this.player.body.touching.down) {
-        if (GameSetup.currentLives() !== 0) {
+        if (gameSetup.currentLives() !== 0) {
           this.jumpSound = this.sound.add('jumpSound', { volume: 0.1, loop: false });
           this.jumpSound.play();
         }
@@ -150,7 +146,7 @@ export default class GameScene extends Phaser.Scene {
   }
 
   addScoreDisplay() {
-    switch (GameSetup.currentLives()) {
+    switch (gameSetup.currentLives()) {
       case (1):
         this.heart1 = this.add.image(config.width - 80, 40, 'heart1');
         break;
@@ -166,26 +162,26 @@ export default class GameScene extends Phaser.Scene {
       default:
         break;
     }
-    this.scoreText = this.add.text(40, 40, `Score: ${GameSetup.currentScore()}`, {
+    this.scoreText = this.add.text(40, 40, `Score: ${gameSetup.currentScore()}`, {
       fontSize: 20,
       fill: '#000',
     });
   }
 
   scoreUp(points) {
-    GameSetup.scoreUp(points);
+    gameSetup.scoreUp(points);
     this.updateScore();
   }
 
   updateScore() {
-    this.scoreText.setText(`Score: ${GameSetup.currentScore()}`);
+    this.scoreText.setText(`Score: ${gameSetup.currentScore()}`);
   }
 
   lifeOver() {
-    GameSetup.liveDown();
+    gameSetup.liveDown();
     this.fallSound = this.sound.add('fallSound', { volume: 0.9, loop: false });
     this.fallSound.play();
-    switch (GameSetup.currentLives()) {
+    switch (gameSetup.currentLives()) {
       case (2):
         this.heart3.visible = false;
         break;
@@ -199,7 +195,7 @@ export default class GameScene extends Phaser.Scene {
   }
 
   saveScore(callback) {
-    webapi.saveScore(this.model.playerName === '' ? 'Anon' : this.model.playerName, GameSetup.currentScore()).then(() => {
+    webapi.saveScore(this.model.playerName === '' ? 'Anon' : this.model.playerName, gameSetup.currentScore()).then(() => {
       callback();
     });
   }
@@ -288,7 +284,7 @@ export default class GameScene extends Phaser.Scene {
     this.dying = false;
 
     // setting collisions between the player and the platform group
-    this.physics.add.collider(this.player, this.platformGroup, function () {
+    this.physics.add.collider(this.player, this.platformGroup, function runAnimation() {
       // play "run" animation if the player is on a platform
       if (!this.player.anims.isPlaying) {
         this.player.anims.play('run');
@@ -296,26 +292,28 @@ export default class GameScene extends Phaser.Scene {
     }, null, this);
 
     // setting collisions between the player and the meat group
-    this.physics.add.overlap(this.player, this.meatGroup, function (player, meat) {
-      this.riserSound = this.sound.add('riserSound', { volume: 0.2, loop: false });
-      this.riserSound.play();
-      this.scoreUp(50);
-      this.tweens.add({
-        targets: meat,
-        y: meat.y - 100,
-        alpha: 0,
-        duration: 800,
-        ease: 'Cubic.easeOut',
-        callbackScope: this,
-        onComplete() {
-          this.meatGroup.killAndHide(meat);
-          this.meatGroup.remove(meat);
-        },
-      });
-    }, null, this);
+    this.physics.add.overlap(this.player,
+      this.meatGroup,
+      function collisionPlayerMeat(player, meat) {
+        this.riserSound = this.sound.add('riserSound', { volume: 0.2, loop: false });
+        this.riserSound.play();
+        this.scoreUp(50);
+        this.tweens.add({
+          targets: meat,
+          y: meat.y - 100,
+          alpha: 0,
+          duration: 800,
+          ease: 'Cubic.easeOut',
+          callbackScope: this,
+          onComplete() {
+            this.meatGroup.killAndHide(meat);
+            this.meatGroup.remove(meat);
+          },
+        });
+      }, null, this);
 
     // setting collisions between the player and the cactus group
-    this.physics.add.overlap(this.player, this.cactusGroup, function () {
+    this.physics.add.overlap(this.player, this.cactusGroup, function collisionPlayerCactus() {
       this.player.y = 10000;
       this.dying = true;
       this.player.anims.stop();
@@ -339,18 +337,18 @@ export default class GameScene extends Phaser.Scene {
 
   gameOver() {
     this.lifeOver();
-    if (GameSetup.currentLives() === 0) {
+    if (gameSetup.currentLives() === 0) {
       this.scene.pause();
-      game = this;
+      const game = this;
       game.sys.game.globals.bgMusicGame.stop();
       this.bgGameOverMusic = this.sound.add('bgGameOverMusic', { volume: 0.5, loop: false });
       this.bgGameOverMusic.play();
       this.timedEvent = this.time.delayedCall(2000, this.saveScore(() => {
-        game.model.score = GameSetup.currentScore();
+        game.model.score = gameSetup.currentScore();
         game.scene.start('GameOver');
         game.sys.game.globals.bgMusic.play();
         game.model.bgMusic = true;
-        GameSetup.newGame();
+        gameSetup.newGame();
       }), [], this);
     } else {
       this.scene.start('Game');
@@ -367,18 +365,18 @@ export default class GameScene extends Phaser.Scene {
     if (this.player.y > config.height) {
       this.firstCactus = true;
       this.lifeOver();
-      if (GameSetup.currentLives() === 0) {
+      if (gameSetup.currentLives() === 0) {
         this.scene.pause();
-        game = this;
+        const game = this;
         game.sys.game.globals.bgMusicGame.stop();
         this.bgGameOverMusic = this.sound.add('bgGameOverMusic', { volume: 0.5, loop: false });
         this.bgGameOverMusic.play();
         this.timedEvent = this.time.delayedCall(2000, this.saveScore(() => {
-          game.model.score = GameSetup.currentScore();
+          game.model.score = gameSetup.currentScore();
           game.scene.start('GameOver');
           game.sys.game.globals.bgMusic.play();
           game.model.bgMusic = true;
-          GameSetup.newGame();
+          gameSetup.newGame();
         }), [], this);
       } else {
         this.scene.start('Game');
@@ -389,7 +387,7 @@ export default class GameScene extends Phaser.Scene {
     // recycling platforms
     let minDistance = config.width;
     let rightmostPlatformHeight = 0;
-    this.platformGroup.getChildren().forEach(function (platform) {
+    this.platformGroup.getChildren().forEach(function reusePlatform(platform) {
       const platformDistance = config.width - platform.x - platform.displayWidth / 2;
       if (platformDistance < minDistance) {
         minDistance = platformDistance;
@@ -402,7 +400,7 @@ export default class GameScene extends Phaser.Scene {
     }, this);
 
     // recycling meats
-    this.meatGroup.getChildren().forEach(function (meat) {
+    this.meatGroup.getChildren().forEach(function reuseMeat(meat) {
       if (meat.x < -meat.displayWidth / 2) {
         this.meatGroup.killAndHide(meat);
         this.meatGroup.remove(meat);
@@ -410,7 +408,7 @@ export default class GameScene extends Phaser.Scene {
     }, this);
 
     // recycling cactus
-    this.cactusGroup.getChildren().forEach(function (cactus) {
+    this.cactusGroup.getChildren().forEach(function reuseCactus(cactus) {
       if (cactus.x < -cactus.displayWidth / 2) {
         this.cactusGroup.killAndHide(cactus);
         this.cactusGroup.remove(cactus);
@@ -418,7 +416,7 @@ export default class GameScene extends Phaser.Scene {
     }, this);
 
     // recycling clouds
-    this.cloudGroup.getChildren().forEach(function (cloud) {
+    this.cloudGroup.getChildren().forEach(function reuseClouds(cloud) {
       if (cloud.x < -cloud.displayWidth) {
         const rightmostcloud = this.getRightmostcloud();
         cloud.x = rightmostcloud + Phaser.Math.Between(100, 350);

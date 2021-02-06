@@ -5,14 +5,14 @@ import platform from '../assets/ui/square.jpg';
 import player from '../assets/ui/google_dino.png';
 import meat from '../assets/ui/meat.png';
 import cloud from '../assets/ui/cloud.png';
+import bgMusic from '../assets/Loyalty_Freak_Music.mp3';
+import bgGameOverMusic from '../assets/shindeiru.ogg';
+import jumpSound from '../assets/jumping.mp3';
 import cactus from '../assets/ui/cactus.png';
 import heart from '../assets/ui/grey_heart.png';
 import greyButton1 from '../assets/ui/grey_button1.jpg';
 import greyButton2 from '../assets/ui/grey_button2.png';
 import bgMusicGame from '../assets/Steve_Combs.mp3';
-import bgMusic from '../assets/Loyalty_Freak_Music.mp3';
-import bgGameOverMusic from '../assets/shindeiru.ogg';
-import jumpSound from '../assets/jumping.mp3';
 
 
 export default class PreloaderScene extends Phaser.Scene {

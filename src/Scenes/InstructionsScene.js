@@ -1,5 +1,4 @@
 import Phaser from 'phaser';
-import ButtonWithCallback from '../Elements/Button';
 import Button from '../Elements/Button';
 
 const enterKey = (e) => {
@@ -74,7 +73,7 @@ export default class InstructionsScene extends Phaser.Scene {
       }
     });
 
-    this.startButton = new ButtonWithCallback(this, 400, 400, 'greyButton1', 'greyButton2', 'Start!', 'Game', this.invokeSaving);
+    this.startButton = new Button(this, 400, 400, 'greyButton1', 'greyButton2', 'Start!', 'Game', this.invokeSaving);
     this.menuButton = new Button(this, 400, 480, 'greyButton1', 'greyButton2', 'Menu', 'Title');
   }
 
