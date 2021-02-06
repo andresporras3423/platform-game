@@ -102,7 +102,6 @@ export default class PreloaderScene extends Phaser.Scene {
     this.load.audio('bgMusic', [bgMusic]);
     this.load.audio('bgMusicGame', [bgMusicGame]);
     this.load.audio('bgGameOverMusic', [bgGameOverMusic]);
-    
 
 
     // preloading game assets

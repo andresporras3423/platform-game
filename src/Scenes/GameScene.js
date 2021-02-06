@@ -16,7 +16,7 @@ export default class GameScene extends Phaser.Scene {
     this.heart1 = {};
     this.heart2 = {};
     this.heart3 = {};
-    this.firstCactus=true;
+    this.firstCactus = true;
   }
 
   // the core of the script: platform are added from the pool or created on the fly
@@ -72,13 +72,11 @@ export default class GameScene extends Phaser.Scene {
       }
     }
     // is there a cactus over the platform?
-    if(this.firstCactus){
-      this.firstCactus=false;
-    }
-    else{
-    if (Phaser.Math.Between(1, 100) <= gameOptions.cactusPercent) {
+    if (this.firstCactus) {
+      this.firstCactus = false;
+    } else if (Phaser.Math.Between(1, 100) <= gameOptions.cactusPercent) {
       if (this.cactusPool.getLength()) {
-          const cactus = this.cactusPool.getFirst();
+        const cactus = this.cactusPool.getFirst();
         cactus.x = posX - platformWidth / 2 + Phaser.Math.Between(1, platformWidth);
         cactus.y = posY - 46;
         cactus.alpha = 1;
@@ -90,8 +88,8 @@ export default class GameScene extends Phaser.Scene {
           posX - platformWidth / 2
                     + Phaser.Math.Between(1, platformWidth), posY - 46, 'cactus',
         );
-        
-          cactus.setImmovable(true);
+
+        cactus.setImmovable(true);
         cactus.setVelocityX(platform.body.velocity.x);
         cactus.setSize(8, 2, true);
         cactus.anims.play('burn');
@@ -100,7 +98,7 @@ export default class GameScene extends Phaser.Scene {
       }
     }
   }
-  }
+
   // the player jumps when on the ground, or once in the air as long as there are
   // jumps left and the first jump was on the ground
   // and obviously if the player is not dying
@@ -339,24 +337,24 @@ export default class GameScene extends Phaser.Scene {
     this.input.on('pointerdown', this.jump, this);
   }
 
-  gameOver(){
+  gameOver() {
     this.lifeOver();
-      if (GameSetup.currentLives() === 0) {
-        this.scene.pause();
-        game = this;
-        game.sys.game.globals.bgMusicGame.stop();
-        this.bgGameOverMusic = this.sound.add('bgGameOverMusic', { volume: 0.5, loop: false });
-        this.bgGameOverMusic.play();
-        this.timedEvent = this.time.delayedCall(2000, this.saveScore(() => {
-          game.model.score = GameSetup.currentScore();
-          game.scene.start('GameOver');
-          game.sys.game.globals.bgMusic.play();
-          game.model.bgMusic = true;
-          GameSetup.newGame();
-        }), [], this);
-      } else {
-        this.scene.start('Game');
-      }
+    if (GameSetup.currentLives() === 0) {
+      this.scene.pause();
+      game = this;
+      game.sys.game.globals.bgMusicGame.stop();
+      this.bgGameOverMusic = this.sound.add('bgGameOverMusic', { volume: 0.5, loop: false });
+      this.bgGameOverMusic.play();
+      this.timedEvent = this.time.delayedCall(2000, this.saveScore(() => {
+        game.model.score = GameSetup.currentScore();
+        game.scene.start('GameOver');
+        game.sys.game.globals.bgMusic.play();
+        game.model.bgMusic = true;
+        GameSetup.newGame();
+      }), [], this);
+    } else {
+      this.scene.start('Game');
+    }
   }
 
   update() {
@@ -367,7 +365,7 @@ export default class GameScene extends Phaser.Scene {
 
     // game over
     if (this.player.y > config.height) {
-      this.firstCactus=true;
+      this.firstCactus = true;
       this.lifeOver();
       if (GameSetup.currentLives() === 0) {
         this.scene.pause();
@@ -405,7 +403,7 @@ export default class GameScene extends Phaser.Scene {
 
     // recycling meats
     this.meatGroup.getChildren().forEach(function (meat) {
-      if (meat.x < - meat.displayWidth / 2) {
+      if (meat.x < -meat.displayWidth / 2) {
         this.meatGroup.killAndHide(meat);
         this.meatGroup.remove(meat);
       }
@@ -454,7 +452,7 @@ export default class GameScene extends Phaser.Scene {
 
 function resize() {
   const canvas = document.querySelector('canvas');
-  canvas.style.border="5px solid grey";
+  canvas.style.border = '5px solid grey';
   const windowWidth = window.innerWidth;
   const windowHeight = window.innerHeight;
   const windowRatio = windowWidth / windowHeight;

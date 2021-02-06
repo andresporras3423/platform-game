@@ -27,7 +27,7 @@ test('getScore should return an array', () => {
 test('getScore should not bring score in ascending order', () => {
   webapi.getScore()
     .then((response) => {
-      expect(response).not.toEqual(expect.arrayContaining(response.sort((a, b) =>  a.score- b.score)));
+      expect(response).not.toEqual(expect.arrayContaining(response.sort((a, b) => a.score - b.score)));
     });
 });
 
@@ -54,7 +54,7 @@ test('saveScore is successful even if score is 0', () => {
 });
 
 test('saveScore fails if score is null is null', () => {
-  webapi.saveScore("oscar", null)
+  webapi.saveScore('oscar', null)
     .then((response) => {
       expect(response).resolves.not.toBe('Leaderboard score created correctly.');
     });
