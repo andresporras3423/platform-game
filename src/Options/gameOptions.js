@@ -13,7 +13,7 @@ const gameOptions = {
   // before next platform spawns, in pixels
   spawnRange: [100, 150],
   // platform width range, in pixels
-  platformSizeRange: [150, 300],
+  platformSizeRange: [200, 300],
   // player gravity
   playerGravity: 1500,
   // player jump force

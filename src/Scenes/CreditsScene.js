@@ -24,39 +24,40 @@ export default class CreditsScene extends Phaser.Scene {
       this.emailTween,
       this.linkedinTween,
       this.portfolioTween];
+    
+      [...Array(5).keys()].forEach((i)=>{
+        Phaser.Display.Align.In.Center(
+          elements[i],
+          this.area,
+        );
+        [...Array(5).keys()].forEach((j)=>{
+          if (j > 0) {
+            elements[j].setY(400 + (j * 200));
+          }
+        });
 
-    for (let i = 0; i < 5; i += 1) {
-      Phaser.Display.Align.In.Center(
-        elements[i],
-        this.area,
-      );
-      for (let j = 0; j < 5; j += 1) {
-        if (j > 0) {
-          elements[j].setY(400 + (j * 200));
-        }
-      }
-      for (let k = 0; k < 5; k += 1) {
-        if (k > 0) {
-          tweenElements[k] = this.tweens.add({
-            targets: elements[k],
-            y: -900 + (k * 200),
-            ease: 'Power1',
-            duration: 8000,
-            delay: 500 * k,
-            onComplete: () => {
-              this.scene.start('Title');
-            },
-          });
-        } else {
-          this.tweens.add({
-            targets: elements[k],
-            y: -900 + (k * 200),
-            ease: 'Power1',
-            duration: 8000,
-            delay: 500 * k,
-          });
-        }
-      }
-    }
+        [...Array(5).keys()].forEach((k)=>{
+          if (k > 0) {
+            tweenElements[k] = this.tweens.add({
+              targets: elements[k],
+              y: -900 + (k * 200),
+              ease: 'Power1',
+              duration: 8000,
+              delay: 500 * k,
+              onComplete: () => {
+                this.scene.start('Title');
+              },
+            });
+          } else {
+            this.tweens.add({
+              targets: elements[k],
+              y: -900 + (k * 200),
+              ease: 'Power1',
+              duration: 8000,
+              delay: 500 * k,
+            });
+          }
+        });
+      });
   }
 }
