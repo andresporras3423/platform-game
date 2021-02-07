@@ -2,9 +2,9 @@ import Phaser from 'phaser';
 import Button from '../Elements/Button';
 import gameOptions from '../Options/gameOptions';
 
-export default class HelpScene extends Phaser.Scene {
+export default class LevelScene extends Phaser.Scene {
   constructor() {
-    super('Help');
+    super('Level');
   }
 
   create() {

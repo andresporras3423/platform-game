@@ -5,7 +5,7 @@ import BootScene from './Scenes/BootScene';
 import PreloaderScene from './Scenes/PreloaderScene';
 import TitleScene from './Scenes/TitleScene';
 import CreditsScene from './Scenes/CreditsScene';
-import HelpScene from './Scenes/HelpScene';
+import LevelScene from './Scenes/LevelScene';
 import GameOverScene from './Scenes/GameOverScene';
 import ScoreScene from './Scenes/ScoreScene';
 import InstructionsScene from './Scenes/InstructionsScene';
@@ -16,7 +16,7 @@ class Game extends Phaser.Game {
     super(config);
     const model = new ModelService();
     this.globals = { model, bgMusic: null, bgMusicGame: null };
-    this.scene.add('Help', HelpScene);
+    this.scene.add('Level', LevelScene);
     this.scene.add('Score', ScoreScene);
     this.scene.add('GameOver', GameOverScene);
     this.scene.add('Instructions', InstructionsScene);
