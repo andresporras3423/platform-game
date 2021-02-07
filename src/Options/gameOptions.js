@@ -1,30 +1,29 @@
 const gameOptions = {
-  // a height range between rightmost platform and next platform to be spawned
+  // a height range between current platform and next platform
   platformHeightRange: [-3, 3],
-  // a scale to be multiplied by platformHeightRange
+  // height scales for the platform
   platformHeighScale: 20,
-  // platform max and min height, as screen height ratio
+  // Using screen height ratio, define platform max and min height
   platformVerticalLimit: [0.4, 0.8],
-  // platform speed range, in pixels per second
+  // speed of platforms by pixels per second
   platformSpeedRange: [300, 300],
   // clouds speed, in pixels per second
   cloudSpeed: 80,
-  // spawn range, how far should be the rightmost platform from the right edge
-  // before next platform spawns, in pixels
+  // horizontal distance between current platform and the next
   spawnRange: [100, 150],
-  // platform width range, in pixels
+  // range of platform width, in pixels
   platformSizeRange: [200, 300],
-  // player gravity
+  // gravity for the player
   playerGravity: 1500,
-  // player jump force
+  // height of player jump
   jumpForce: 400,
-  // player starting X position
+  // initial player position on the X axis
   playerStartPosition: 300,
-  // consecutive jumps allowed
+  // consecutive jumps possible
   jumps: 3,
-  // % of probability a coin appears on the platform
+  // probability (%) of a meat appears on each platform
   meatPercent: 25,
-  // % of probability a fire appears on the platform
+  // probability (%) of a cactus appears on the platform
   cactusPercent: 100,
 };
 
