@@ -21,10 +21,8 @@ export default class PreloaderScene extends Phaser.Scene {
   }
 
   preload() {
-    // add logo image
     this.add.image(400, 200, 'logo');
 
-    // display progress bar
     const progressBar = this.add.graphics();
     const progressBox = this.add.graphics();
     progressBox.fillStyle(0x222222, 0.8);
@@ -65,7 +63,6 @@ export default class PreloaderScene extends Phaser.Scene {
     });
     assetText.setOrigin(0.5, 0.5);
 
-    // update progress bar
     this.load.on('progress', (value) => {
       percentText.setText(`${parseInt(value * 100, 10)}%`);
       progressBar.clear();
@@ -73,12 +70,10 @@ export default class PreloaderScene extends Phaser.Scene {
       progressBar.fillRect(250, 280, 300 * value, 30);
     });
 
-    // update file progress text
     this.load.on('fileprogress', (file) => {
       assetText.setText(`Loading asset: ${file.key}`);
     });
 
-    // remove progress bar when complete
     this.load.on('complete', () => {
       progressBar.destroy();
       progressBox.destroy();
@@ -90,7 +85,6 @@ export default class PreloaderScene extends Phaser.Scene {
 
     this.timedEvent = this.time.delayedCall(3000, this.ready, [], this);
 
-    // load assets needed in our game
     this.load.audio('jumpSound', [jumpSound]);
     this.load.audio('fallSound', [fallSound]);
     this.load.audio('riserSound', [riserSound]);
@@ -103,25 +97,19 @@ export default class PreloaderScene extends Phaser.Scene {
     this.load.audio('bgMusicGame', [bgMusicGame]);
     this.load.audio('bgGameOverMusic', [bgGameOverMusic]);
 
-
-    // preloading game assets
     this.load.image('platform', platform);
-    // player is a sprite sheet made by 24x48 pixels
     this.load.spritesheet('player', player, {
       frameWidth: 24,
       frameHeight: 48,
     });
-    // the meat is a sprite sheet made by 20x20 pixels
     this.load.spritesheet('meat', meat, {
       frameWidth: 40,
       frameHeight: 40,
     });
-    // cloud are a sprite sheet made by 512x512 pixels
     this.load.spritesheet('cloud', cloud, {
       frameWidth: 1024,
       frameHeight: 1024,
     });
-    // the cactuscamp is a sprite sheet made by 32x58 pixels
     this.load.spritesheet('cactus', cactus, {
       frameWidth: 55,
       frameHeight: 55,

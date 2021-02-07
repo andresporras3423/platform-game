@@ -15,7 +15,6 @@ export default class GameScene extends Phaser.Scene {
     this.firstCactus = true;
   }
 
-  // the core of the script: platform are added from the pool or created on the fly
   newPlatform(platformWidth, posX, posY) {
     this.addedPlatforms += 1;
     let platform;
@@ -46,7 +45,6 @@ export default class GameScene extends Phaser.Scene {
       gameOptions.spawnRange[1],
     );
 
-    // is there a meat over the platform?
     if (this.addedPlatforms > 1) {
       if (Phaser.Math.Between(1, 100) <= gameOptions.meatPercent) {
         if (this.meatPool.getLength()) {
@@ -67,7 +65,7 @@ export default class GameScene extends Phaser.Scene {
         }
       }
     }
-    // is there a cactus over the platform?
+
     if (this.firstCactus) {
       this.firstCactus = false;
     } else if (Phaser.Math.Between(1, 100) <= gameOptions.cactusPercent) {
@@ -95,9 +93,6 @@ export default class GameScene extends Phaser.Scene {
     }
   }
 
-  // the player jumps when on the ground, or once in the air as long as there are
-  // jumps left and the first jump was on the ground
-  // and obviously if the player is not dying
   jump() {
     if ((!this.dying)
             && (
@@ -115,12 +110,10 @@ export default class GameScene extends Phaser.Scene {
       this.player.setVelocityY(gameOptions.jumpForce * -1);
       this.playerJumps += 1;
 
-      // stops animation
       this.player.anims.stop();
     }
   }
 
-  // adding clouds
   addclouds() {
     const rightmostcloud = this.getRightmostcloud();
     if (rightmostcloud < config.width * 2) {
@@ -136,7 +129,6 @@ export default class GameScene extends Phaser.Scene {
     }
   }
 
-  // getting rightmost cloud x position
   getRightmostcloud() {
     let rightmostcloud = -200;
     this.cloudGroup.getChildren().forEach((cloud) => {
@@ -207,95 +199,73 @@ export default class GameScene extends Phaser.Scene {
   }
 
   create() {
-    // group with all active clouds.
     this.cloudGroup = this.add.group();
 
-    // group with all active platforms.
     this.platformGroup = this.add.group({
-      // once a platform is removed, it's added to the pool
       removeCallback(platform) {
         platform.scene.platformPool.add(platform);
       },
     });
 
-    // pool
     this.platformPool = this.add.group({
-      // once a platform is removed from the pool, it's added to the active platforms group
       removeCallback(platform) {
         platform.scene.platformGroup.add(platform);
       },
     });
 
-    // group with all active meats.
     this.meatGroup = this.add.group({
-      // once a meat is removed, it's added to the pool
       removeCallback(meat) {
         meat.scene.meatPool.add(meat);
-      },
+      }
     });
 
-    // meat pool
     this.meatPool = this.add.group({
-      // once a meat is removed from the pool, it's added to the active meats group
       removeCallback(meat) {
         meat.scene.meatGroup.add(meat);
       },
     });
 
-    // group with all active cactuscamps.
     this.cactusGroup = this.add.group({
 
-      // once a cactuscamp is removed, it's added to the pool
       removeCallback(cactus) {
         cactus.scene.cactusPool.add(cactus);
       },
     });
 
-    // cactus pool
     this.cactusPool = this.add.group({
 
-      // once a cactus is removed from the pool, it's added to the active cactus group
       removeCallback(cactus) {
         cactus.scene.cactusGroup.add(cactus);
       },
     });
 
-    // adding a cloud
     this.addclouds();
 
-    // keeping track of added platforms
     this.addedPlatforms = 0;
 
-    // number of consecutive jumps made by the player
     this.playerJumps = 0;
 
-    // adding a platform to the game, the arguments are platform width, x position and y position
     this.newPlatform(
       config.width, config.width / 1.5,
       config.height * gameOptions.platformVerticalLimit[1],
     );
 
-    // adding the player;
     this.player = this.physics.add.sprite(gameOptions.playerStartPosition, config.height * 0.7, 'player');
     this.player.setGravityY(gameOptions.playerGravity);
     this.player.setDepth(2);
 
-    // the player is not dying
     this.dying = false;
 
     const runAnimation = (player) => {
-      // play "run" animation if the player is on a platform
       if (!player.anims.isPlaying) {
         player.anims.play('run');
       }
     };
 
-    // setting collisions between the player and the platform group
     this.physics.add.collider(this.player,
       this.platformGroup,
       runAnimation(this.player), null, this);
 
-    // setting collisions between the player and the meat group
     this.physics.add.overlap(this.player,
       this.meatGroup,
       (player, meat) => {
@@ -316,8 +286,6 @@ export default class GameScene extends Phaser.Scene {
         });
       }, null, this);
 
-
-    // setting collisions between the player and the cactus group
     this.physics.add.overlap(this.player, this.cactusGroup, () => {
       this.player.y = 10000;
       this.dying = true;
@@ -336,7 +304,6 @@ export default class GameScene extends Phaser.Scene {
       this.sys.game.globals.bgMusicGame = this.bgMusicGame;
     }
 
-    // allow click for mobile users
     this.input.on('pointerdown', this.jump, this);
   }
 
@@ -361,12 +328,10 @@ export default class GameScene extends Phaser.Scene {
   }
 
   update() {
-    // jumping listener
     if (Phaser.Input.Keyboard.JustDown(this.keys.keyEnter)) {
       this.jump();
     }
 
-    // game over
     if (this.player.y > config.height) {
       this.firstCactus = true;
       this.lifeOver();
@@ -389,7 +354,6 @@ export default class GameScene extends Phaser.Scene {
     }
     this.player.x = gameOptions.playerStartPosition;
 
-    // recycling platforms
     let minDistance = config.width;
     let rightmostPlatformHeight = 0;
     this.platformGroup.getChildren().forEach((platform) => {
@@ -404,7 +368,6 @@ export default class GameScene extends Phaser.Scene {
       }
     }, this);
 
-    // recycling meats
     this.meatGroup.getChildren().forEach((meat) => {
       if (meat.x < -meat.displayWidth / 2) {
         this.meatGroup.killAndHide(meat);
@@ -412,7 +375,6 @@ export default class GameScene extends Phaser.Scene {
       }
     }, this);
 
-    // recycling cactus
     this.cactusGroup.getChildren().forEach((cactus) => {
       if (cactus.x < -cactus.displayWidth / 2) {
         this.cactusGroup.killAndHide(cactus);
@@ -420,7 +382,6 @@ export default class GameScene extends Phaser.Scene {
       }
     }, this);
 
-    // recycling clouds
     this.cloudGroup.getChildren().forEach((cloud) => {
       if (cloud.x < -cloud.displayWidth) {
         const rightmostcloud = this.getRightmostcloud();
@@ -433,7 +394,6 @@ export default class GameScene extends Phaser.Scene {
       }
     }, this);
 
-    // adding new platforms
     if (minDistance > this.nextPlatformDistance) {
       const nextPlatformWidth = Phaser.Math.Between(
         gameOptions.platformSizeRange[0], gameOptions.platformSizeRange[1],

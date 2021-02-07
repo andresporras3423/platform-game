@@ -19,10 +19,6 @@ export default class CreditsScene extends Phaser.Scene {
       this.emailText,
       this.linkedinText,
       this.portfolioText];
-    // this.madeByTween;
-    // this.emailTween;
-    // this.linkedinTween;
-    // this.portfolioTween;
     const tweenElements = [null,
       this.madeByTween,
       this.emailTween,
@@ -48,7 +44,6 @@ export default class CreditsScene extends Phaser.Scene {
             duration: 8000,
             delay: 500 * k,
             onComplete: () => {
-              // tweenElements[k].destroy();
               this.scene.start('Title');
             },
           });
@@ -59,9 +54,6 @@ export default class CreditsScene extends Phaser.Scene {
             ease: 'Power1',
             duration: 8000,
             delay: 500 * k,
-            // onComplete() {
-            // this.destroy();
-            // },
           });
         }
       }

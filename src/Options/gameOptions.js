@@ -1,4 +1,10 @@
 const gameOptions = {
+  // a height range between rightmost platform and next platform to be spawned
+  platformHeightRange: [-3, 3],
+  // a scale to be multiplied by platformHeightRange
+  platformHeighScale: 20,
+  // platform max and min height, as screen height ratio
+  platformVerticalLimit: [0.4, 0.8],
   // platform speed range, in pixels per second
   platformSpeedRange: [300, 300],
   // clouds speed, in pixels per second
@@ -8,12 +14,6 @@ const gameOptions = {
   spawnRange: [100, 150],
   // platform width range, in pixels
   platformSizeRange: [150, 300],
-  // a height range between rightmost platform and next platform to be spawned
-  platformHeightRange: [-3, 3],
-  // a scale to be multiplied by platformHeightRange
-  platformHeighScale: 20,
-  // platform max and min height, as screen height ratio
-  platformVerticalLimit: [0.4, 0.8],
   // player gravity
   playerGravity: 1500,
   // player jump force
