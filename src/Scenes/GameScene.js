@@ -118,7 +118,7 @@ export default class GameScene extends Phaser.Scene {
     const rightmostcloud = this.getRightmostcloud();
     if (rightmostcloud < config.width * 2) {
       const cloud = this.physics.add.sprite(rightmostcloud + Phaser.Math.Between(100, 350), config.height + Phaser.Math.Between(0, 100), 'cloud');
-      cloud.setOrigin(0.5, 1);
+      cloud.setOrigin(0.5, 2.0);
       cloud.body.setVelocityX(gameOptions.cloudSpeed * -1);
       this.cloudGroup.add(cloud);
       if (Phaser.Math.Between(0, 1)) {
