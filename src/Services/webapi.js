@@ -1,7 +1,12 @@
+import gameOptions from '../Options/gameOptions';
+
 const webapi = (() => {
-  const url = 'https://us-central1-js-capstone-backend.cloudfunctions.net/api/games/Vd5SKbQfAzVOc48DZkxP/scores/';
+  const urls = {
+    2: 'https://us-central1-js-capstone-backend.cloudfunctions.net/api/games/FVcIja5G7BvBg6ZEodVK/scores/',
+    3: 'https://us-central1-js-capstone-backend.cloudfunctions.net/api/games/Vd5SKbQfAzVOc48DZkxP/scores/',
+  };
   const getScore = async () => {
-    const response = await fetch(url, {
+    const response = await fetch(urls[gameOptions.jumps], {
       method: 'GET',
       headers: {
         Accept: 'application/json',
@@ -14,7 +19,7 @@ const webapi = (() => {
   };
 
   const saveScore = async (name, score) => {
-    const response = await fetch(url, {
+    const response = await fetch(urls[gameOptions.jumps], {
       method: 'POST',
       headers: {
         Accept: 'application/json',
