@@ -1,6 +1,6 @@
 import Phaser from 'phaser';
-import config from '../Options/config';
 import Button from '../Elements/Button';
+import gameOptions from '../Options/gameOptions';
 
 export default class HelpScene extends Phaser.Scene {
   constructor() {
@@ -8,8 +8,46 @@ export default class HelpScene extends Phaser.Scene {
   }
 
   create() {
+    this.model = this.sys.game.globals.model;
+
+    this.text = this.add.text(300, 100, 'Select difficulty', { fontSize: 40, fill: '#000' });
+    this.doubleJumpRadio = this.add.image(200, 200, 'radioButtonBlank');
+    this.doubleJumpText = this.add.text(250, 190, 'Double Jump (hard mode)', { fontSize: 24, fill: '#000' });
+    this.tripleJumpRadio = this.add.image(200, 300, 'radioButtonBlank');
+    this.tripleJumpText = this.add.text(250, 290, 'Triple Jump (easy mode)', { fontSize: 24, fill: '#000' });
+
+    this.doubleJumpRadio.setInteractive();
+    this.tripleJumpRadio.setInteractive();
+
+    this.doubleJumpRadio.on('pointerdown', () => {
+      this.updateJumpValue();
+      this.updateJumpRadio();
+    });
+
+    this.tripleJumpRadio.on('pointerdown', () => {
+      this.updateJumpValue();
+      this.updateJumpRadio();
+    });
     this.menuButton = new Button(this, 400, 500, 'greyButton1', 'greyButton2', 'Menu', 'Title');
-    this.text = this.add.text(config.width / 2 - 190, 120, '1) Press enter key to jump.\n2) You can make three consecutive jumps. \n3) catch the meats.', { fontSize: 24, fill: '#000' });
-    this.text = this.add.text(config.width / 2 - 120, 40, 'How to play', { fontSize: 44, fill: '#000' });
+
+    this.updateJumpRadio();
+  }
+
+  updateJumpValue = () => {
+    if (gameOptions.jumps === 3) {
+      gameOptions.jumps = 2;
+    } else {
+      gameOptions.jumps = 3;
+    }
+  }
+
+  updateJumpRadio = () => {
+    if (gameOptions.jumps === 2) {
+      this.doubleJumpRadio.setTexture('radioButtonCheck');
+      this.tripleJumpRadio.setTexture('radioButtonBlank');
+    } else {
+      this.doubleJumpRadio.setTexture('radioButtonBlank');
+      this.tripleJumpRadio.setTexture('radioButtonCheck');
+    }
   }
 }

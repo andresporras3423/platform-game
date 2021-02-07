@@ -13,6 +13,8 @@ import heart from '../assets/ui/grey_heart.png';
 import greyButton1 from '../assets/ui/grey_button1.jpg';
 import greyButton2 from '../assets/ui/grey_button2.png';
 import bgMusicGame from '../assets/Steve_Combs.mp3';
+import radioButtonBlank from '../assets/ui/radioButton_blank.png';
+import radioButtonCheck from '../assets/ui/radioButton_check.png';
 
 
 export default class PreloaderScene extends Phaser.Scene {
@@ -91,11 +93,14 @@ export default class PreloaderScene extends Phaser.Scene {
     this.load.image('heart1', heart);
     this.load.image('heart2', heart);
     this.load.image('heart3', heart);
+
     this.load.image('greyButton1', greyButton1);
     this.load.image('greyButton2', greyButton2);
     this.load.audio('bgMusic', [bgMusic]);
     this.load.audio('bgMusicGame', [bgMusicGame]);
     this.load.audio('bgGameOverMusic', [bgGameOverMusic]);
+    this.load.image('radioButtonBlank', radioButtonBlank);
+    this.load.image('radioButtonCheck', radioButtonCheck);
 
     this.load.image('platform', platform);
     this.load.spritesheet('player', player, {

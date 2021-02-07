@@ -216,7 +216,7 @@ export default class GameScene extends Phaser.Scene {
     this.meatGroup = this.add.group({
       removeCallback(meat) {
         meat.scene.meatPool.add(meat);
-      }
+      },
     });
 
     this.meatPool = this.add.group({
@@ -416,8 +416,8 @@ export default class GameScene extends Phaser.Scene {
 const resize = () => {
   const canvas = document.querySelector('canvas');
   canvas.style.border = '5px solid grey';
-  const windowWidth = window.innerWidth*0.9;
-  const windowHeight = window.innerHeight*0.9;
+  const windowWidth = window.innerWidth * 0.9;
+  const windowHeight = window.innerHeight * 0.9;
   const windowRatio = windowWidth / windowHeight;
   const gameRatio = config.width / config.height;
   if (windowRatio < gameRatio) {

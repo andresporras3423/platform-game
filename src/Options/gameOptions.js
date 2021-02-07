@@ -20,7 +20,7 @@ const gameOptions = {
   // initial player position on the X axis
   playerStartPosition: 300,
   // consecutive jumps possible
-  jumps: 3,
+  jumps: 2,
   // probability (%) of a meat appears on each platform
   meatPercent: 25,
   // probability (%) of a cactus appears on the platform
