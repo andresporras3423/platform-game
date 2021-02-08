@@ -8,16 +8,16 @@ JavaScript Microverse Captsone Project By Oscar Russi
 
 - Platform game built with Phaser3
 
-## GAME DESIGN
+# GAME DESIGN
 
-# Objectives for this project
+## Objectives for this project
 
-- Build a platform game inspired in the running dinosaur game
+- Built a platform game inspired in the running dinosaur game
 - The elements of the game should make anyone recall the original game (main character, background, obstacles)
 - The game include platform game features (objects to collect, double jump)
 - As an additional feature I wanted to add the option of change difficulty so the player can get use to the game using the easy mode.
 
-# How to play
+## How to play
 
 - Before starting a game, the player can type one's name, otherwise score will be save using default "Anon" name.
 ![play](/images/play-screenshot.png)
@@ -27,7 +27,7 @@ JavaScript Microverse Captsone Project By Oscar Russi
 - Player get points when one catch meats (20 points) or when jump over cactus (50 points)
 - Player has three lifes, one lose a life if doesn't jump over an obstacle or fall down from the platform
 
-# Features
+## Features
 - Main menu has three options, play to start a new game, credits to my contact information, and level to change the difficulty.
 ![menu](/images/menu-screenshot.png)
 - The player can save score using a typed name or by default Anon name.
