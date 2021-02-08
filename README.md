@@ -2,7 +2,7 @@
 
 JavaScript Microverse Captsone Project By Oscar Russi
 
-![screenshot](/images/platform-sccreenshot.png)
+![screenshot](/images/platform-screenshot.png)
 
 # What it does
 
