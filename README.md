@@ -46,7 +46,7 @@ JavaScript Microverse Captsone Project By Oscar Russi
 
 # Live demo
 
-[Live Demo](https://andresporras3423.github.io/todo-list/dist/index.html)
+[Live Demo](https://gifted-poitras-77933b.netlify.app/dist/index.html)
 
 # How to run this project
 
