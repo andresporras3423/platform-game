@@ -46,7 +46,6 @@ test('saveScore dont returns a successful message when name is empty', () => {
     });
 });
 
-
 test('saveScore is successful even if score is 0', () => {
   webapi.saveScore('Andres', 0)
     .then((response) => {

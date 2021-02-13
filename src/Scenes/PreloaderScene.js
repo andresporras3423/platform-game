@@ -16,7 +16,6 @@ import bgMusicGame from '../assets/Steve_Combs.mp3';
 import radioButtonBlank from '../assets/ui/radioButton_blank.png';
 import radioButtonCheck from '../assets/ui/radioButton_check.png';
 
-
 export default class PreloaderScene extends Phaser.Scene {
   constructor() {
     super('Preloader');

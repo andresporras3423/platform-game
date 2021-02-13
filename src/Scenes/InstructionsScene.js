@@ -10,7 +10,6 @@ const enterKey = (e) => {
   return false;
 };
 
-
 const checkKeys = (e) => {
   if (
     e.key !== 'Backspace'

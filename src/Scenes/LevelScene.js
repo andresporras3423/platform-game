@@ -42,7 +42,6 @@ export default class LevelScene extends Phaser.Scene {
     this.updateJumpRadio();
   }
 
-
   updateJumpRadio() {
     if (gameOptions.jumps === 2) {
       this.doubleJumpRadio.setTexture('radioButtonCheck');

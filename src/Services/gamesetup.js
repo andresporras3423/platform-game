@@ -23,7 +23,6 @@ export const GameSetup = (() => {
 
   const currentLives = () => lives;
 
-
   return {
     newGame,
     currentLives,
