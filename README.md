@@ -12,10 +12,10 @@ JavaScript Microverse Captsone Project By Oscar Russi
 
 ## Objectives for this project
 
-- Built a platform game inspired in the running dinosaur game
-- The elements of the game should make anyone recall the original game (main character, background, obstacles)
-- The game include platform game features (objects to collect, double jump)
-- As an additional feature I wanted to add the option of change difficulty so the player can get use to the game using the easy mode.
+- Built a platform game inspired by the running dinosaur game
+- The elements of the game should make anyone recall the original game (the main character, background, obstacles)
+- The game includes platform game features (objects to collect, double jump)
+- As an additional feature I wanted to add the option of change difficulty so the player can get used to the game using the easy mode.
 
 ## How to play
 
